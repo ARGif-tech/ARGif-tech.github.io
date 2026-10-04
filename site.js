@@ -30,6 +30,49 @@
     else if (/^https:\/\/wa\.me\//i.test(href)) track('whatsapp_click', position);
   });
 
+  // Homepage video: the same AR Works vertical case/promo used in Reels, TikTok and Shorts.
+  if (document.body.classList.contains('home')) {
+    const hero = document.querySelector('.hero');
+    if (hero && !document.getElementById('arworks-video')) {
+      const style = document.createElement('style');
+      style.textContent = `
+        #arworks-video .video-wrap{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:38px;align-items:center}
+        #arworks-video .video-frame{width:100%;max-width:420px;margin:0 auto;border-radius:24px;overflow:hidden;background:#050807;box-shadow:0 22px 60px rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.10)}
+        #arworks-video video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#050807}
+        #arworks-video .video-copy{max-width:650px}
+        #arworks-video .video-copy p{font-size:1.05rem;line-height:1.65}
+        #arworks-video .video-copy .btn{margin-top:10px}
+        @media (max-width:760px){#arworks-video .video-wrap{grid-template-columns:1fr;gap:24px}#arworks-video .video-frame{max-width:360px}#arworks-video .video-copy{text-align:left}}
+      `;
+      document.head.appendChild(style);
+
+      const section = document.createElement('section');
+      section.id = 'arworks-video';
+      section.innerHTML = `
+        <div class="w">
+          <div class="ey">AR Works в работе</div>
+          <div class="video-wrap">
+            <div class="video-frame">
+              <video controls playsinline preload="metadata" poster="/ar-works-social-v2.png" aria-label="Видео AR Works о санитарном обслуживании бизнеса">
+                <source src="https://static.metricool.com/planner/202610/7237186-file-582162800735096527.mp4" type="video/mp4">
+                Ваш браузер не поддерживает воспроизведение видео.
+              </video>
+            </div>
+            <div class="video-copy">
+              <h2>Санитарное обслуживание бизнеса в Астане</h2>
+              <p class="muted">Дезинсекция, дератизация, дезинфекция и озонирование для кафе, ресторанов, магазинов, складов, производств и других организаций. Разовые работы или регулярное обслуживание под задачи объекта.</p>
+              <p class="muted">Для предварительного расчёта достаточно указать тип объекта, площадь и проблему.</p>
+              <a class="btn primary" data-track="whatsapp-video" href="https://wa.me/77760001966?text=Здравствуйте%2C%20посмотрел%20видео%20на%20сайте%20AR%20Works.%20Нужен%20расчёт%20для%20организации">Получить расчёт в WhatsApp</a>
+            </div>
+          </div>
+        </div>`;
+      hero.insertAdjacentElement('afterend', section);
+
+      const video = section.querySelector('video');
+      if (video) video.addEventListener('play', () => track('video_play', 'home'), { once: true });
+    }
+  }
+
   const form = document.getElementById('request-form');
   if (form) form.addEventListener('submit', (event) => {
     event.preventDefault();
