@@ -1,7 +1,7 @@
-User-agent: OAI-SearchBot
+User-agent: *
 Allow: /
 
-User-agent: *
+User-agent: OAI-SearchBot
 Allow: /
 
 Sitemap: https://argif-tech.github.io/sitemap.xml
