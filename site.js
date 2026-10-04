@@ -30,7 +30,7 @@
     else if (/^https:\/\/wa\.me\//i.test(href)) track('whatsapp_click', position);
   });
 
-  // Homepage video: the same AR Works vertical case/promo used in Reels, TikTok and Shorts.
+  // Homepage video: local copy hosted with the AR Works site.
   if (document.body.classList.contains('home')) {
     const hero = document.querySelector('.hero');
     if (hero && !document.getElementById('arworks-video')) {
@@ -54,7 +54,7 @@
           <div class="video-wrap">
             <div class="video-frame">
               <video controls playsinline preload="metadata" poster="/ar-works-social-v2.png" aria-label="Видео AR Works о санитарном обслуживании бизнеса">
-                <source src="https://static.metricool.com/planner/202610/7237186-file-582162800735096527.mp4" type="video/mp4">
+                <source src="/ar-works-business.mp4" type="video/mp4">
                 Ваш браузер не поддерживает воспроизведение видео.
               </video>
             </div>
