@@ -1,0 +1,123 @@
+{
+  "pages": [
+    {
+      "file": "index.html",
+      "width": 390,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "dlya-organizatsiy.html",
+      "width": 390,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "dezinsektsiya.html",
+      "width": 390,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "deratizatsiya.html",
+      "width": 390,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "dezinfektsiya.html",
+      "width": 390,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "ozonirovanie.html",
+      "width": 390,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "cafe-restaurants.html",
+      "width": 390,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "warehouses.html",
+      "width": 390,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "index.html",
+      "width": 1440,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "dlya-organizatsiy.html",
+      "width": 1440,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "dezinsektsiya.html",
+      "width": 1440,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "deratizatsiya.html",
+      "width": 1440,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "dezinfektsiya.html",
+      "width": 1440,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "ozonirovanie.html",
+      "width": 1440,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "cafe-restaurants.html",
+      "width": 1440,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    },
+    {
+      "file": "warehouses.html",
+      "width": 1440,
+      "overflow": false,
+      "h1": 1,
+      "errors": []
+    }
+  ],
+  "form": {
+    "whitespaceInvalid": true,
+    "phone": "/77760001966",
+    "textIncludesTask": true,
+    "includesSource": true,
+    "eventsContainPII": false
+  }
+}
