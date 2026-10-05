@@ -28,7 +28,7 @@
     }
     if (!form.reportValidity()) return;
     const data = new FormData(form);
-    const lines = ['Здравствуйте! Хочу обсудить задачу объекта с AR Works.', 'Объект: ' + data.get('object'), 'Площадь: ' + String(data.get('area')).trim(), 'Задача: ' + String(data.get('problem')).trim(), 'Понимаю, что AR Works готовит запуск и пока не подтверждает выполнение работ.'];
+    const lines = ['Здравствуйте! Нужен расчёт для коммерческого объекта.', 'Объект: ' + data.get('object'), 'Площадь: ' + String(data.get('area')).trim(), 'Задача: ' + String(data.get('problem')).trim()];
     const source = new URLSearchParams(location.search).get('utm_source');
     if (['instagram', 'threads', 'tiktok', 'youtube', 'facebook', 'google', 'yandex'].includes(source)) lines.push('Источник: ' + source);
     track('quote_whatsapp_open', 'form');
