@@ -1,0 +1,45 @@
+/* Motion enhances reading and interaction; every section is available without JS. */
+:root{--motion-ease:cubic-bezier(.16,1,.3,1)}
+.motion-page .hero{position:relative;overflow:hidden;padding-top:82px;background:radial-gradient(ellipse at 85% 30%,#214e3e55,transparent 58%),#08161f}
+.motion-page .hero-grid{grid-template-columns:1.2fr 1fr;gap:65px}
+.motion-page h1{font-size:clamp(44px,4.6vw,68px);line-height:1.06;letter-spacing:-.045em}
+.motion-page .hero-copy{animation:hero-in .7s var(--motion-ease) both}
+.hero-detail{font-size:12px;color:var(--green);letter-spacing:.025em;margin:25px 0}
+.motion-page .button{border-radius:4px;transition:transform .2s,background .2s,box-shadow .2s}
+.motion-page .button:hover{transform:translateY(-2px);box-shadow:0 8px 24px #0003}
+.motion-page .service-card,.motion-page .object-card{transition:background .25s,transform .25s,border-color .25s}
+.motion-page .service-card:hover,.motion-page .object-card:hover{transform:translateY(-3px);border-color:var(--green)}
+.motion-system{min-width:0;width:100%;border:1px solid #365748;border-radius:18px;position:relative;background:linear-gradient(145deg,#12302799,#10233388);box-shadow:0 40px 80px #0002;overflow:hidden;animation:hero-in .9s var(--motion-ease) both}
+.system-top,.system-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:23px 25px;font-size:10px;letter-spacing:.04em;color:var(--muted);position:relative;z-index:2}
+.system-top{border-bottom:1px solid #3a554666;font-size:9px}
+.motion-toggle{background:transparent;border:1px solid #658c79;color:var(--ink);border-radius:5px;cursor:pointer;font-size:10px;min-height:40px;padding:8px}
+.system-bottom{font-size:13px;border-top:1px solid #3a554666;letter-spacing:0}
+.system-arrow{font-size:32px;color:var(--green)}
+.orbital{height:350px;position:relative;background-image:linear-gradient(#46645715 1px,transparent 1px),linear-gradient(90deg,#46645715 1px,transparent 1px);background-size:35px 35px;isolation:isolate}
+.orbit{position:absolute;border-radius:50%;left:50%;top:50%;border:1px solid #6ba98a55;transform:translate(-50%,-50%)}
+.orbit-one{width:270px;height:270px;border-top:2px solid var(--green);border-bottom-color:var(--blue);animation:orbit-spin 24s linear infinite}
+.orbit-two{width:205px;height:205px;border-style:dashed;animation:orbit-spin 34s linear infinite reverse}
+.orbit-three{width:325px;height:325px;opacity:.5}
+.orb-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:116px;height:116px;border-radius:28px;background:linear-gradient(135deg,#316c4d,#18374b);border:1px solid #83b49e;box-shadow:0 0 60px #75b69920;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.orb-core>span{font-size:45px;font-weight:750;line-height:1.1;letter-spacing:-.08em}.orb-core small{font-size:10px;letter-spacing:.25em}
+.orbit-node{position:absolute;font-size:9px;letter-spacing:.06em;z-index:3;padding:9px 12px;background:#102b25;border:1px solid #567c69;border-radius:5px;color:var(--ink)}
+.node-one{left:18px;top:57px}.node-two{right:18px;top:190px;background:#132b3b}.node-three{left:30px;bottom:48px}
+.scan-beam{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,#8ac6a512 49%,#8ac6a560 50%,transparent 50.5%);animation:scan-pass 7s ease-in-out infinite;z-index:-1}
+.choice-section{border-bottom:1px solid var(--line)}
+.object-choices{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px}
+.object-choices button{color:var(--muted);background:#102431;border:1px solid #395361;padding:14px 20px;border-radius:50px;cursor:pointer;font-size:14px;min-height:48px;transition:background .2s,color .2s}
+.object-choices button[aria-pressed=true]{background:var(--green);color:#092317;border-color:var(--green)}
+.choice-panel{padding:30px 35px;border:1px solid #456559;background:linear-gradient(110deg,#17362e,#102431);border-radius:12px;display:flex;align-items:center;gap:40px;justify-content:space-between}
+.choice-panel h3{font-size:28px;margin:13px 0}.choice-panel p{max-width:600px;font-size:16px;color:var(--muted);margin:0}.choice-panel .button{flex-shrink:0}
+.value-section{background:#e9eee9;color:#112721}.value-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:95px}.value-section .ey{color:#296c4d}.value-section h2 span{color:#296c4d}.value-section .muted,.value-list p{color:#4f645b;font-size:16px}
+.value-list article{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid #becfc5}.value-list article:first-child{padding-top:0}.value-list h3{font-size:23px;margin:0 0 12px}.value-list p{margin:0}.value-list article>span{color:#296c4d;font-size:13px}
+.motion-ready .reveal-pending{opacity:0;transform:translateY(20px)}
+.motion-ready .revealed{opacity:1;transform:none;transition:opacity .45s var(--motion-ease),transform .45s var(--motion-ease)}
+.motion-paused .orbit,.motion-paused .scan-beam{animation-play-state:paused}
+.motion-paused .reveal-pending{opacity:1;transform:none}.motion-paused .revealed{transition:none}
+@keyframes hero-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes orbit-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes scan-pass{0%,100%{transform:translateY(-100px);opacity:.3}50%{transform:translateY(110px);opacity:1}}
+@media(max-width:1050px){.motion-page .hero-grid{gap:32px}.value-grid{gap:45px}.choice-panel{gap:25px;align-items:flex-start;flex-direction:column}.system-top{padding:18px;gap:8px}}
+@media(max-width:700px){.motion-page .hero{padding-top:43px}.motion-page .hero-grid{grid-template-columns:1fr;gap:35px}.motion-page h1{font-size:clamp(34px,9.5vw,45px)}.motion-system{max-width:450px;margin:auto}.orbital{height:320px}.orbit-one{width:240px;height:240px}.orbit-three{width:290px;height:290px}.orb-core{width:100px;height:100px}.hero-detail{font-size:11px}.object-choices{gap:8px}.object-choices button{font-size:12px;padding:12px 14px}.choice-panel{padding:24px}.choice-panel .button{width:100%}.choice-panel h3{font-size:25px}.value-grid{grid-template-columns:1fr;gap:28px}.value-list article{gap:16px}.system-top{font-size:8px}.system-bottom{font-size:12px}.motion-page .lead{font-size:17px}.motion-page .ey{font-size:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.motion-page *{animation:none!important;transition:none!important}.motion-ready .reveal-pending{opacity:1;transform:none}}
