@@ -42,3 +42,5 @@ for file,(title,h1,h2,desc,points) in PAGES.items():
 print('Built',len(PAGES),'pages + privacy')
 from build_motion import enhance
 enhance()
+from build_cinematic import enhance_cinematic
+enhance_cinematic()

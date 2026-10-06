@@ -1,0 +1,19 @@
+"""Apply the cinematic layer after the base/motion generators."""
+from pathlib import Path
+import re
+ROOT=Path(__file__).parent
+HERO='''<section class="hero cinema-hero"><div class="cinema-atmosphere" aria-hidden="true"></div><div class="wrap cinema-grid"><div class="hero-copy"><p class="ey"><span class="live-dot" aria-hidden="true"></span> Астана и пригород / Для бизнеса</p><h1><span class="cinema-line">Санитарные</span><span class="cinema-line">задачи.</span><span class="cinema-line accent">Под контроль.</span></h1><p class="lead">AR Works — санитарное обслуживание бизнеса. Дезинсекция, дератизация, дезинфекция и озонирование.</p><div class="cinema-actions"><a class="button primary" href="#request">Обсудить мой объект <span aria-hidden="true">↗</span></a><a class="text-link hero-link" href="#control-story">Как мы подходим к задаче ↓</a></div></div><div class="cinema-stage"><video class="cinema-video" muted loop playsinline preload="none" poster="/cinema-poster.webp" data-src="/cinema-loop.mp4" aria-hidden="true"></video><div class="cinema-emblem" aria-hidden="true"><img src="/ar-works-logo-v2.svg" alt="" width="260" height="72"></div><div class="stage-caption"><span>AR WORKS</span><span>ОБЪЕКТ · ЗАДАЧА · РЕШЕНИЕ</span></div><button class="motion-toggle cinema-toggle" type="button" aria-pressed="false">Пауза анимации</button></div></div><div class="wrap cinema-footer"><span>САНИТАРНОЕ ОБСЛУЖИВАНИЕ БИЗНЕСА</span><a href="#services">Четыре направления <span aria-hidden="true">↓</span></a></div></section>'''
+STORY='''<section id="control-story" class="control-story"><div class="wrap story-layout"><div class="story-sticky"><p class="ey">Видеть больше отдельных признаков</p><h2>От проблемы.<br><span>К системе.</span></h2><div class="control-map" aria-hidden="true"><div class="map-grid"></div><div class="map-orbit"></div><div class="map-center">AR</div><span class="map-point p1"></span><span class="map-point p2"></span><span class="map-point p3"></span><div class="map-sweep"></div></div><p class="map-caption">ОБЪЕКТ / УСЛОВИЯ / ДАЛЬНЕЙШИЕ ДЕЙСТВИЯ</p></div><div class="story-chapters"><article class="story-chapter" data-chapter="1"><span class="num">01 / ПРИЗНАКИ</span><h3>Появились признаки.<br>Нужен следующий шаг.</h3><p>Насекомые, следы грызунов или стойкий запах — опишите, что заметили и в каких зонах.</p></article><article class="story-chapter" data-chapter="2"><span class="num">02 / КОНТЕКСТ</span><h3>У каждого объекта<br>свои условия.</h3><p>Площадь, хранение, доступ и режим работы. Эти детали помогают обсуждать задачу предметно.</p></article><article class="story-chapter" data-chapter="3"><span class="num">03 / ПОРЯДОК</span><h3>Сначала условия.<br>Затем действия.</h3><p>Обсудим формат обслуживания, объём, стоимость, подготовку и документы для вашего объекта.</p><a class="text-link" href="#request">Начать с моего объекта ↗</a></article></div></div></section>'''
+def enhance_cinematic():
+    names=['index.html','dlya-organizatsiy.html','dezinsektsiya.html','deratizatsiya.html','dezinfektsiya.html','ozonirovanie.html','cafe-restaurants.html','warehouses.html']
+    for name in names:
+        path=ROOT/name;page=path.read_text()
+        if 'cinematic.css' in page:continue
+        page=page.replace('</head>','<link rel="stylesheet" href="/cinematic.css?v=20261006-cinema"><script src="/cinematic.js?v=20261006-cinema" defer></script></head>')
+        if name=='index.html':
+            page=page.replace('class="motion-page"','class="motion-page cinematic-page"')
+            page=re.sub(r'<section class="hero">.*?</section>',HERO+STORY,page,count=1,flags=re.S)
+        page=page.replace('motion.css?v=20261006"','motion.css?v=20261006-cinema"').replace('motion.js?v=20261006"','motion.js?v=20261006-cinema"')
+        path.write_text(page)
+    print('Cinematic layer applied')
+if __name__=='__main__':enhance_cinematic()
