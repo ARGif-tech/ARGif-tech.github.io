@@ -18,6 +18,6 @@ Allow: /
 User-agent: Claude-SearchBot
 Allow: /
 User-agent: ChatGPT-User
-Disallow: /library/
+Allow: /
 
 Sitemap: https://777xsz.shop/sitemap.xml
