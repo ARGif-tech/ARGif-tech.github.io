@@ -1,26 +1,23 @@
 User-agent: *
 Allow: /
 
-# AI assistants and answer engines are welcome
+# Respect the rights in free educational content.
+# These directives guide compliant crawlers; they cannot prevent manual copying.
 User-agent: GPTBot
-Allow: /
-User-agent: OAI-SearchBot
-Allow: /
-User-agent: ChatGPT-User
-Allow: /
+Disallow: /library/
 User-agent: ClaudeBot
-Allow: /
-User-agent: Claude-SearchBot
-Allow: /
-User-agent: PerplexityBot
-Allow: /
+Disallow: /library/
 User-agent: Google-Extended
-Allow: /
+Disallow: /library/
 User-agent: Applebot-Extended
-Allow: /
-User-agent: YandexBot
-Allow: /
-User-agent: Bingbot
-Allow: /
+Disallow: /library/
+User-agent: PerplexityBot
+Disallow: /library/
+User-agent: OAI-SearchBot
+Disallow: /library/
+User-agent: Claude-SearchBot
+Disallow: /library/
+User-agent: ChatGPT-User
+Disallow: /library/
 
 Sitemap: https://777xsz.shop/sitemap.xml
