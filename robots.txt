@@ -12,11 +12,11 @@ Disallow: /library/
 User-agent: Applebot-Extended
 Disallow: /library/
 User-agent: PerplexityBot
-Disallow: /library/
+Allow: /
 User-agent: OAI-SearchBot
-Disallow: /library/
+Allow: /
 User-agent: Claude-SearchBot
-Disallow: /library/
+Allow: /
 User-agent: ChatGPT-User
 Disallow: /library/
 
