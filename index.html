@@ -37,6 +37,17 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1!important;transform:none!important}}
 
 /* Portrait composition: the public source portrait is 180px square, so it is intentionally not stretched into a full-bleed photograph. */
+/* Visible movement even on phones and devices without WebGL2. */
+.hero-art-fallback{animation:coreTurn 12s linear infinite;transform-origin:center;will-change:transform}
+.hero-orbit--one{animation:orbitTurnA 22s linear infinite}
+.hero-orbit--two{animation:orbitTurnB 27s linear infinite reverse}
+@keyframes coreTurn{
+  0%{transform:perspective(720px) rotateZ(-33deg) rotateY(-12deg) rotateX(8deg) scaleY(.68)}
+  50%{transform:perspective(720px) rotateZ(147deg) rotateY(167deg) rotateX(20deg) scaleY(.78)}
+  100%{transform:perspective(720px) rotateZ(327deg) rotateY(348deg) rotateX(8deg) scaleY(.68)}
+}
+@keyframes orbitTurnA{from{transform:rotateX(68deg) rotate(-35deg)}to{transform:rotateX(68deg) rotate(325deg)}}
+@keyframes orbitTurnB{from{transform:rotateY(68deg) rotate(23deg)}to{transform:rotateY(68deg) rotate(383deg)}}
 .founder-photo,.about-portrait{isolation:isolate;background:radial-gradient(circle at 50% 44%,#265542 0%,#142c27 30%,#0d1b1b 73%)}
 .founder-photo::before,.about-portrait::before{content:'';position:absolute;width:80%;aspect-ratio:1;border:1px solid rgba(198,164,91,.22);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 40px rgba(65,158,110,.035),0 0 0 110px rgba(65,158,110,.018)}
 .founder-photo img,.about-portrait img{position:absolute;inset:auto;left:50%;top:48%;width:min(54%,250px);height:auto;aspect-ratio:1;object-fit:cover;object-position:center;border-radius:50%;transform:translate(-50%,-50%);border:5px solid rgba(177,208,186,.28);box-shadow:0 22px 70px rgba(0,0,0,.5);filter:saturate(.9) contrast(1.02)}
@@ -181,7 +192,7 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
   if(!canvas)return;
   const art=q('.hero-art');
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // On narrow/mobile devices use a static optimized CSS composition instead of GPU rendering.
+  // On narrow/mobile devices use an animated, GPU-light CSS composition.
   if(window.innerWidth < 800 || reduced || !('IntersectionObserver' in window))return;
   const gl=canvas.getContext('webgl2',{alpha:true,antialias:false,depth:false,stencil:false,preserveDrawingBuffer:false,powerPreference:'low-power'});
   if(!gl)return;
@@ -197,7 +208,7 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
     mat3 rx(float a){float c=cos(a),s=sin(a);return mat3(1.,0.,0.,0.,c,-s,0.,s,c);}
     mat3 ry(float a){float c=cos(a),s=sin(a);return mat3(c,0.,s,0.,1.,0.,-s,0.,c);}
     mat3 rz(float a){float c=cos(a),s=sin(a);return mat3(c,-s,0.,s,c,0.,0.,0.,1.);}
-    vec3 spin(vec3 p){return rz(.19+uPointer.x*.2)*ry(-.16+uPointer.x*.28+uTime*.08)*rx(.38+uPointer.y*.23)*p;}
+    vec3 spin(vec3 p){return rz(.19+uPointer.x*.2)*ry(-.16+uPointer.x*.28+uTime*.33)*rx(.38+uPointer.y*.23)*p;}
     float torus(vec3 p){vec3 q=spin(p);vec2 d=vec2(length(q.xy)-1.05,q.z);return length(d)-.245;}
     vec3 normalAt(vec3 p){float e=.0015;return normalize(vec3(torus(p+vec3(e,0.,0.))-torus(p-vec3(e,0.,0.)),torus(p+vec3(0.,e,0.))-torus(p-vec3(0.,e,0.)),torus(p+vec3(0.,0.,e))-torus(p-vec3(0.,0.,e))));}
     void main(){
