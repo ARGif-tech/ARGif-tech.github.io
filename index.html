@@ -111,6 +111,28 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
 .home .hero-art::before{background-image:url('/assets/kazakh-entrepreneur-illustration.svg');background-repeat:no-repeat;background-size:contain}
 .home .hero[data-photo-ready="true"] .hero-art::before{background-image:url('/assets/777xsz-hero-entrepreneur-astana.webp');background-position:center bottom;background-size:cover;border-radius:18px;mask-image:linear-gradient(to right,transparent,#000 18%,#000 85%,transparent)}
 @media(max-width:700px){.home .hero[data-photo-ready="true"] .hero-art::before{background-position:55% center;mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 80%,transparent)}}
+</style><style id="xsz-hero-mobile-safety">
+/* Keep actual headline and links above all decorative layers. */
+.home .hero{isolation:isolate}
+.home .hero::before{z-index:-1}
+.home .hero-inner{isolation:isolate}
+.home .hero-copy{position:relative;z-index:8}
+.home .hero-art{z-index:1;pointer-events:none}
+.home .hero-art::before{pointer-events:none}
+.home .hero-actions a{position:relative;z-index:9}
+.home .hero h1,.home .hero-description{position:relative;z-index:8}
+@media(max-width:767px){
+ .home .hero-inner{min-height:0!important}
+ .home .hero-copy{padding:42px 0 72px!important}
+ .home .hero-art{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;opacity:.22!important}
+ .home .hero-art::before{inset:0!important;background-position:80% 80%!important;transform:none!important}
+ .home .hero[data-photo-ready="true"] .hero-art::before{background-position:65% center!important}
+ .home .hero h1{max-width:100%!important;overflow-wrap:break-word;font-size:clamp(2.45rem,10vw,4rem)!important}
+ .home .hero-description{max-width:36ch!important}
+ .home .hero-actions{display:flex!important;flex-direction:column;align-items:stretch;gap:12px}
+ .home .hero-actions a{width:100%!important;max-width:100%;min-height:54px}
+}
+@media(max-width:360px){.home .hero h1{font-size:2.35rem!important}.home .hero-copy{padding-top:28px!important}}
 </style></head><body class="home"><div class="grain" aria-hidden="true"></div><header class="site-header" id="top"><div class="container header-inner">
     <a class="brand" href="/" aria-label="777XSZ, главная"><span class="brand-mark">7<span>7</span>7</span><span class="brand-name">XSZ<span class="brand-dot">.</span></span><span class="brand-caption">DIGITAL INTELLIGENCE<br>STUDIO</span></a>
     <nav class="nav-desktop" aria-label="Главная навигация"><a href="/" aria-current="page">Главная</a><a href="/catalog/" >Решения</a><a href="/ar-app/" >AR App</a><a href="/about/" >Обо мне</a><a href="/library/" >Библиотека</a></nav>
