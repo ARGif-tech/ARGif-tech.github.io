@@ -1,0 +1,20 @@
+/* 777xsz premium reader, staging only. Mobile-first, no external dependencies. */
+.xsz-reader{--paper:#f3ecda;--ink:#302e28;--gold:#c8a969;--reader-font:17px;color:#f5e9d4;background:radial-gradient(circle at 60% 15%,#34483c,#101b18 72%);padding:clamp(18px,4vw,65px);border:1px solid #887044}
+.xsz-reader *{box-sizing:border-box}
+.xsz-reader__top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.xsz-reader button{background:#17271f;border:1px solid #b49a68;color:#f3e8d4;padding:12px 17px;cursor:pointer;min-height:44px;font:inherit}
+.xsz-reader button:focus-visible{outline:3px solid #f6d98a;outline-offset:3px}
+.xsz-reader button:disabled{opacity:.4;cursor:not-allowed}
+.xsz-reader__pages{display:grid;grid-template-columns:1fr 1fr;max-width:1050px;margin:auto;min-height:520px;box-shadow:15px 22px 35px #0008}
+.xsz-reader__page{background:linear-gradient(90deg,#f5ecda,#e8dec6);color:var(--ink);padding:clamp(28px,5vw,65px);display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.xsz-reader__page:first-child{background:linear-gradient(90deg,#ede1c8,#f7f0e0 87%,#ded1b6);box-shadow:inset -8px 0 12px #786b533b}
+.xsz-reader__page:last-child{background:linear-gradient(90deg,#ddd0b5,#f8f0df 10%,#f4ead7)}
+.xsz-reader__page h2{font:normal clamp(30px,3.5vw,52px)/1.2 Georgia,serif;color:#293b30;margin:20px 0}
+.xsz-reader__page p{font:var(--reader-font)/1.85 Georgia,serif;white-space:pre-line;color:#403d33;overflow-wrap:anywhere}
+.xsz-reader__meta{font:11px/1.5 sans-serif;letter-spacing:.15em;text-transform:uppercase;color:#8b754e}
+.xsz-reader__bottom{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:25px}
+.xsz-reader__toc{display:none;margin:0 auto 20px;max-width:700px;background:#182b22;border:1px solid #7c6746;padding:14px}
+.xsz-reader__toc[aria-hidden="false"]{display:block}
+.xsz-reader__toc button{display:block;width:100%;text-align:left;margin:4px 0}
+@media(max-width:700px){.xsz-reader__pages{display:block;min-height:0}.xsz-reader__page:first-child{display:none}.xsz-reader__page:last-child{min-height:490px}.xsz-reader{padding:15px}.xsz-reader__page{padding:28px 24px}.xsz-reader__bottom{gap:8px}.xsz-reader__bottom button{flex:1}}
+@media(prefers-reduced-motion:reduce){.xsz-reader *, .xsz-reader *::before{animation:none!important;transition:none!important}}

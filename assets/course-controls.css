@@ -1,0 +1,10 @@
+/* Course controls complement the existing premium paper layout. */
+.xsz-course-controls{position:relative;z-index:2;background:linear-gradient(125deg,#11281e,#1c3428);color:#f5ebd4;border:1px solid #aa8b52;border-radius:8px;padding:18px;margin:0 0 26px;box-shadow:0 12px 26px #0003}
+.xsz-course-controls__top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;font-size:14px}
+.xsz-course-position{color:#ddc389;font-size:12px}
+.xsz-course-controls__actions{display:flex;gap:8px;flex-wrap:wrap}
+.xsz-course-controls button{min-height:44px;background:#213d30;border:1px solid #ae9463;color:#f5ebd4;border-radius:5px;padding:9px 12px;cursor:pointer;font:inherit;font-size:12px}
+.xsz-course-controls button:disabled{opacity:.35;cursor:not-allowed}
+.xsz-course-controls button:focus-visible{outline:3px solid #e5c47b;outline-offset:2px}
+.reader-layout .article .lesson{scroll-margin-top:24px}
+@media(max-width:650px){.xsz-course-controls{padding:13px}.xsz-course-controls__actions{display:grid;grid-template-columns:1fr 1fr}.xsz-course-controls button{padding:10px 7px;font-size:11px}}

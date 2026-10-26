@@ -1,0 +1,50 @@
+name: 777XSZ site smoke checks
+on:
+  push:
+    branches: [main, redesign-777xsz-premium-library]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  site-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify critical pages and assets
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          paths=['index.html','ar-app/index.html','about/index.html','contact/index.html','catalog/index.html','library/index.html','courses/index.html']
+          courses=['instagram-smm','instagram-target','neyrofotosessiya','ai-multfilmy','elevenlabs-ozvuchka','ai-avatar','ai-ugc-reklama','ai-avtomatizaciya']
+          class Check(HTMLParser):
+              def __init__(self):
+                  super().__init__();self.h1=0;self.title=0;self.links=[]
+              def handle_starttag(self,tag,attrs):
+                  a=dict(attrs)
+                  if tag=='h1':self.h1+=1
+                  if tag=='title':self.title+=1
+                  for key in ('href','src'):
+                      if key in a:self.links.append(a[key])
+          for path in paths+[f'courses/{x}/index.html' for x in courses]:
+              p=Path(path)
+              assert p.is_file(),f'Missing page: {p}'
+              html=p.read_text(encoding='utf-8')
+              parser=Check();parser.feed(html)
+              assert parser.h1==1,f'{p}: expected one H1, got {parser.h1}'
+              assert parser.title==1,f'{p}: expected one title'
+              for url in parser.links:
+                  if url.startswith('/') and not url.startswith('//'):
+                      dest=url.split('?',1)[0].split('#',1)[0]
+                      if not dest:continue
+                      file=Path(dest.lstrip('/'))
+                      if dest.endswith('/'):file=file/'index.html'
+                      assert file.exists(),f'{p}: broken local reference {url}'
+              if path.startswith('courses/') and path!='courses/index.html':
+                  assert '/assets/course-controls.js' in html,f'{p}: no course controls'
+          assert Path('assets/777xsz-hero-entrepreneur-astana.webp').is_file(),'Missing photo'
+          assert Path('assets/777xsz-hero-entrepreneur-astana.webp').stat().st_size>1000,'Empty photo'
+          print('Passed: 15 pages, all local references, 8 course scripts, hero WebP')
+          PY

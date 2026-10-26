@@ -1,0 +1,81 @@
+name: 777XSZ responsive browser QA
+on:
+  push:
+    branches: [redesign-777xsz-premium-library]
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  responsive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install chromium
+      - name: Run local server and browser assertions
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/xsz-http.log 2>&1 &
+          node <<'JS'
+          const {chromium}=require('playwright');
+          const fs=require('fs');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            fs.mkdirSync('qa-screenshots',{recursive:true});
+            const pages=['/','/ar-app/','/about/','/contact/','/catalog/','/library/','/courses/','/courses/instagram-smm/'];
+            const widths=[320,390,768,1440];
+            for(const width of widths){
+              const context=await browser.newContext({viewport:{width,height:850},deviceScaleFactor:1});
+              for(const path of pages){
+                const page=await context.newPage();
+                const errors=[];
+                page.on('pageerror',e=>errors.push(e.message));
+                await page.goto('http://127.0.0.1:8765'+path,{waitUntil:'networkidle'});
+                const data=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth+3,title:document.title,h1:document.querySelectorAll('h1').length}));
+                if(data.overflow)throw Error('Horizontal overflow '+width+' '+path);
+                if(data.h1!==1)throw Error('H1 mismatch '+path);
+                if(errors.length)throw Error('JS errors '+path+': '+errors.join('; '));
+                if(path==='/'){
+                  const loaded=await page.evaluate(async()=>{const im=new Image();im.src='/assets/777xsz-hero-entrepreneur-astana.webp';await im.decode();return im.naturalWidth>0});
+                  if(!loaded)throw Error('Hero WebP did not decode');
+                }
+                if(path==='/courses/instagram-smm/'){
+                  const buttons=await page.locator('.xsz-course-controls button').count();
+                  if(buttons!==4)throw Error('Reader controls missing');
+                }
+                if(width===390&&path==='/'){
+                  const toggle=page.locator('.nav-toggle');
+                  await toggle.click();
+                  const expanded=await toggle.getAttribute('aria-expanded');
+                  if(expanded!=='true')throw Error('Mobile navigation failed to open');
+                  await toggle.click();
+                }
+                if(['/','/courses/','/courses/instagram-smm/'].includes(path)){
+                  await page.evaluate(async()=>{
+                    for(let y=0;y<document.documentElement.scrollHeight;y+=550){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,65))}
+                    window.scrollTo(0,0);
+                  });
+                  await page.waitForTimeout(450);
+                  await page.screenshot({path:'qa-screenshots/'+(path==='/'?'home':path.replace(/\//g,'-'))+'-'+width+'.png',fullPage:true});
+                }
+                await page.close();
+              }
+              await context.close();
+            }
+            await browser.close();
+            console.log('PASS: 8 routes x 4 viewport widths, hero image, reader controls, mobile navigation');
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: responsive-screenshots
+          path: qa-screenshots/
+          if-no-files-found: ignore
