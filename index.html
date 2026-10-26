@@ -77,6 +77,14 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
 /* Keep hero content usable before canvas paints; reduce mobile GPU load. */
 @media(max-width:767px){.home #hero-canvas{display:none!important}.home .hero-art-fallback{opacity:.75}.home .hero-side-note{display:none}.home .hero-copy{isolation:isolate}.home .hero h1{overflow-wrap:normal;hyphens:none}}
 @media(prefers-reduced-motion:reduce){.home #hero-canvas{display:none!important}}
+</style><style id="xsz-astana-scene">
+/* Lightweight, self-hosted Astana artwork, not a baked UI screenshot. */
+.home .hero{position:relative;isolation:isolate}
+.home .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,17,14,.94) 0%,rgba(7,18,15,.83) 37%,rgba(8,18,15,.33) 75%),url('/assets/astana-cinematic-skyline.svg') center 42% / cover no-repeat;pointer-events:none}
+.home .hero-art{opacity:.22}
+.home .hero-inner{position:relative}
+@media(max-width:900px){.home .hero::before{background:linear-gradient(90deg,rgba(6,17,14,.9),rgba(7,18,15,.55)),url('/assets/astana-cinematic-skyline.svg') 65% center / cover no-repeat}}
+@media(max-width:580px){.home .hero::before{background:linear-gradient(180deg,rgba(6,17,14,.8),rgba(7,18,15,.72)),url('/assets/astana-cinematic-skyline.svg') 64% center / auto 100% no-repeat}.home .hero-art{opacity:.1}}
 </style></head><body class="home"><div class="grain" aria-hidden="true"></div><header class="site-header" id="top"><div class="container header-inner">
     <a class="brand" href="/" aria-label="777XSZ, главная"><span class="brand-mark">7<span>7</span>7</span><span class="brand-name">XSZ<span class="brand-dot">.</span></span><span class="brand-caption">DIGITAL INTELLIGENCE<br>STUDIO</span></a>
     <nav class="nav-desktop" aria-label="Главная навигация"><a href="/" aria-current="page">Главная</a><a href="/catalog/" >Решения</a><a href="/ar-app/" >AR App</a><a href="/about/" >Обо мне</a><a href="/library/" >Библиотека</a></nav>
