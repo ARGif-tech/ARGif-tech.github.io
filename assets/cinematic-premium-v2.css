@@ -1,0 +1,14 @@
+/* 777XSZ cinematic premium system v2. Progressive enhancement. */
+:root{--xsz-luxe-gold:#d9b36b;--xsz-luxe-deep:#07120f;--xsz-luxe-cream:#f6ebd4}
+body{background-color:var(--xsz-luxe-deep)}
+.xsz-course-controls{background:linear-gradient(135deg,rgba(11,28,23,.97),rgba(26,37,30,.96))!important;border:1px solid rgba(217,179,107,.46)!important;box-shadow:0 18px 45px #0005, inset 0 1px #fff1;border-radius:18px!important;padding:clamp(14px,2vw,25px)!important;color:var(--xsz-luxe-cream)}
+.xsz-course-controls strong{font-family:Georgia,'Times New Roman',serif;font-size:clamp(20px,2.4vw,29px);font-weight:500;letter-spacing:.015em;color:#f5d7a0}
+.xsz-course-controls button{border:1px solid #b8985a!important;border-radius:9px!important;min-height:44px;transition:background .2s,transform .2s}
+.xsz-course-controls button:hover:not(:disabled){background:#b8985a!important;color:#07120f!important;transform:translateY(-1px)}
+.reader-layout .article .lesson{scroll-margin-top:100px}
+.reader-layout .article .lesson h2,.reader-layout .article .lesson h3{font-family:Georgia,'Times New Roman',serif;letter-spacing:-.02em}
+.reader-layout .article .lesson h2{color:#d9b36b}
+.reader-layout .article blockquote{border-left:3px solid #d9b36b;background:linear-gradient(90deg,#d9b36b13,transparent);padding:16px 20px}
+.reader-layout .article a:focus-visible,.xsz-course-controls button:focus-visible{outline:3px solid #f7d38c;outline-offset:3px}
+@media(max-width:600px){.xsz-course-controls{padding:14px!important}.xsz-course-controls__actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.xsz-course-controls button{font-size:13px;padding:10px 7px;overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){.xsz-course-controls button{transition:none}}
