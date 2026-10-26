@@ -85,6 +85,14 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
 .home .hero-inner{position:relative}
 @media(max-width:900px){.home .hero::before{background:linear-gradient(90deg,rgba(6,17,14,.9),rgba(7,18,15,.55)),url('/assets/astana-cinematic-skyline.svg') 65% center / cover no-repeat}}
 @media(max-width:580px){.home .hero::before{background:linear-gradient(180deg,rgba(6,17,14,.8),rgba(7,18,15,.72)),url('/assets/astana-cinematic-skyline.svg') 64% center / auto 100% no-repeat}.home .hero-art{opacity:.1}}
+</style><style id="xsz-entrepreneur-hero">
+/* Illustration is an independent layer: accessible links and heading remain HTML. */
+.home .hero-art::before{content:"";position:absolute;z-index:3;inset:4% -5% -10% 5%;background:url('/assets/kazakh-entrepreneur-illustration.svg') center bottom / contain no-repeat;filter:drop-shadow(0 18px 40px #0009);pointer-events:none}
+.home .hero-art #hero-canvas,.home .hero-art .hero-orbit,.home .hero-art .floating-data,.home .hero-art .hero-coordinate{display:none!important}
+.home .hero-art{opacity:1!important;filter:none!important}
+.home .hero-art::after{z-index:4;pointer-events:none}
+@media(max-width:900px){.home .hero-art{opacity:.55!important}.home .hero-art::before{background-position:80% bottom;inset:5% -16% 0 20%}}
+@media(max-width:580px){.home .hero-art{opacity:.3!important}.home .hero-art::before{inset:25% -50% 0 18%;background-position:right bottom}.home .hero-copy{z-index:6}}
 </style></head><body class="home"><div class="grain" aria-hidden="true"></div><header class="site-header" id="top"><div class="container header-inner">
     <a class="brand" href="/" aria-label="777XSZ, главная"><span class="brand-mark">7<span>7</span>7</span><span class="brand-name">XSZ<span class="brand-dot">.</span></span><span class="brand-caption">DIGITAL INTELLIGENCE<br>STUDIO</span></a>
     <nav class="nav-desktop" aria-label="Главная навигация"><a href="/" aria-current="page">Главная</a><a href="/catalog/" >Решения</a><a href="/ar-app/" >AR App</a><a href="/about/" >Обо мне</a><a href="/library/" >Библиотека</a></nav>
