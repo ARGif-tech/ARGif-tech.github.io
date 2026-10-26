@@ -267,7 +267,9 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
     });
   }
 
-  // Procedural 3D torus. The text, links and CTA remain real HTML.
+  // Retired WebGL hero: artwork is now rendered as a static, lightweight layer.
+  // Stop before allocating a GPU context or scheduling animation frames.
+  return;
   const canvas=q('#hero-canvas');
   if(!canvas)return;
   const art=q('.hero-art');
