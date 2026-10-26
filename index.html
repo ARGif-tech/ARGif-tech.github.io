@@ -53,6 +53,26 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
 .founder-photo img,.about-portrait img{position:absolute;inset:auto;left:50%;top:48%;width:min(54%,250px);height:auto;aspect-ratio:1;object-fit:cover;object-position:center;border-radius:50%;transform:translate(-50%,-50%);border:5px solid rgba(177,208,186,.28);box-shadow:0 22px 70px rgba(0,0,0,.5);filter:saturate(.9) contrast(1.02)}
 .founder-photo::after,.about-portrait::after{background:linear-gradient(0deg,rgba(5,13,12,.65),transparent 32%);pointer-events:none}
 @media(max-width:640px){.founder-photo img,.about-portrait img{width:min(56%,220px)}.about-portrait{min-height:370px}}
+</style><style id="xsz-cinematic-home">
+/* Cinematic editorial homepage, preserving current sections and SEO. */
+.home .hero{background:radial-gradient(ellipse at 80% 25%,rgba(165,122,55,.13),transparent 40%),linear-gradient(125deg,#081410 5%,#14241e 60%,#0b1716);overflow:hidden}
+.home .hero-inner{min-height:min(800px,88svh);align-items:center}
+.home .hero-copy{max-width:760px}
+.home .hero-overline{color:#d2b879;letter-spacing:.19em}
+.home .hero h1{white-space:normal!important;font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.065em;line-height:1.06;font-size:clamp(3.2rem,6.4vw,7rem);text-wrap:balance;text-shadow:0 4px 25px #0006}
+.home .hero h1 .headline-muted{color:#f5eee0}
+.home .hero h1 em{background:linear-gradient(110deg,#e5c887,#b98e48,#f1d7a2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.home .hero-description{font-size:clamp(1rem,1.3vw,1.17rem);line-height:1.8;color:#c7d3c7}
+.home .hero-actions .button--primary{background:#c6a45b;color:#132017}
+.home .hero-actions .button--primary:hover{background:#e2c37e}
+.home .hero-art{opacity:.55;filter:saturate(.55) sepia(.16)}
+.home .hero-art::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#10201a 0%,transparent 35%),linear-gradient(0deg,#0a1513 0%,transparent 40%)}
+.home .hero-proof{color:#c6b99c}
+.home .trust-band{background:#182820;border-top:1px solid #a989513f;border-bottom:1px solid #a989513f}
+.home .trust-band .trust-inner>div{color:#e5d7b8}
+@media(max-width:900px){.home .hero-inner{min-height:auto;padding-top:38px;padding-bottom:80px}.home .hero-copy{padding:30px 0 60px}.home .hero h1{font-size:clamp(3rem,10vw,5.2rem)}.home .hero-art{opacity:.26;pointer-events:none}.home .hero-actions{gap:12px}}
+@media(max-width:580px){.home .hero-inner{display:block;position:relative;min-height:690px}.home .hero-copy{position:relative;z-index:5;padding:30px 0 55px}.home .hero h1{font-size:clamp(2.85rem,11vw,4.4rem);margin:28px 0 22px}.home .hero-description{max-width:36ch;font-size:1rem}.home .hero-actions{display:grid;grid-template-columns:1fr}.home .hero-actions .button{width:100%;white-space:normal;min-height:58px}.home .hero-art{position:absolute;inset:0;opacity:.18;max-width:none;width:100%;height:100%}.home .hero-proof{flex-wrap:wrap;font-size:.75rem}.home .hero-overline{font-size:.58rem;letter-spacing:.1em}}
+@media(prefers-reduced-motion:reduce){.home .hero .pulse::after{animation:none}}
 </style></head><body class="home"><div class="grain" aria-hidden="true"></div><header class="site-header" id="top"><div class="container header-inner">
     <a class="brand" href="/" aria-label="777XSZ, главная"><span class="brand-mark">7<span>7</span>7</span><span class="brand-name">XSZ<span class="brand-dot">.</span></span><span class="brand-caption">DIGITAL INTELLIGENCE<br>STUDIO</span></a>
     <nav class="nav-desktop" aria-label="Главная навигация"><a href="/" aria-current="page">Главная</a><a href="/catalog/" >Решения</a><a href="/ar-app/" >AR App</a><a href="/about/" >Обо мне</a><a href="/library/" >Библиотека</a></nav>
@@ -60,8 +80,8 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
   </div><nav id="mobile-nav" class="nav-mobile" aria-label="Мобильная навигация" hidden><a href="/">Главная<span aria-hidden="true">↗</span></a><a href="/catalog/">Решения<span aria-hidden="true">↗</span></a><a href="/ar-app/">AR App<span aria-hidden="true">↗</span></a><a href="/about/">Обо мне<span aria-hidden="true">↗</span></a><a href="/library/">Библиотека<span aria-hidden="true">↗</span></a><a href="/contact/">Контакты<span aria-hidden="true">↗</span></a><a href="/faq/">Условия<span aria-hidden="true">↗</span></a></nav></header><main id="main">
   <section class="hero"><div class="container hero-inner"><div class="hero-copy">
     <div class="hero-overline"><span class="pulse"></span> 777XSZ / DIGITAL INTELLIGENCE STUDIO</div>
-    <h1>Ваш бизнес.<br><span class="headline-muted">На новом уровне</span><br><em>интеллекта.</em></h1>
-    <p class="hero-description">Создаю AI-агентов и автоматизацию, которые помогают бизнесу быстрее отвечать клиентам, обрабатывать заявки и сокращать ручную работу.</p>
+    <h1>Бизнес под контролем.<br><em>Жизнь в балансе.</em></h1>
+    <p class="hero-description">Создаю системы автоматизации для предпринимателей, которые хотят меньше времени тратить на операционку и больше внимания уделять развитию бизнеса и жизни.</p>
     <div class="hero-actions"><a class="button button--primary" href="/contact/"><span>Обсудить автоматизацию</span><span aria-hidden="true">↗</span></a><a class="button button--ghost" href="/catalog/"><span>Смотреть решения</span><span aria-hidden="true">↗</span></a></div>
     <div class="hero-proof"><div class="proof-line"></div><span>Астана · Казахстан</span><span class="proof-sep"></span><span>Работа с проектами онлайн</span></div>
   </div><div class="hero-art"><div class="hero-art-aura"></div><div class="hero-orbit hero-orbit--one"></div><div class="hero-orbit hero-orbit--two"></div>
