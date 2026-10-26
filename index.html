@@ -73,6 +73,10 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
 @media(max-width:900px){.home .hero-inner{min-height:auto;padding-top:38px;padding-bottom:80px}.home .hero-copy{padding:30px 0 60px}.home .hero h1{font-size:clamp(3rem,10vw,5.2rem)}.home .hero-art{opacity:.26;pointer-events:none}.home .hero-actions{gap:12px}}
 @media(max-width:580px){.home .hero-inner{display:block;position:relative;min-height:690px}.home .hero-copy{position:relative;z-index:5;padding:30px 0 55px}.home .hero h1{font-size:clamp(2.85rem,11vw,4.4rem);margin:28px 0 22px}.home .hero-description{max-width:36ch;font-size:1rem}.home .hero-actions{display:grid;grid-template-columns:1fr}.home .hero-actions .button{width:100%;white-space:normal;min-height:58px}.home .hero-art{position:absolute;inset:0;opacity:.18;max-width:none;width:100%;height:100%}.home .hero-proof{flex-wrap:wrap;font-size:.75rem}.home .hero-overline{font-size:.58rem;letter-spacing:.1em}}
 @media(prefers-reduced-motion:reduce){.home .hero .pulse::after{animation:none}}
+</style><style id="xsz-hero-performance">
+/* Keep hero content usable before canvas paints; reduce mobile GPU load. */
+@media(max-width:767px){.home #hero-canvas{display:none!important}.home .hero-art-fallback{opacity:.75}.home .hero-side-note{display:none}.home .hero-copy{isolation:isolate}.home .hero h1{overflow-wrap:normal;hyphens:none}}
+@media(prefers-reduced-motion:reduce){.home #hero-canvas{display:none!important}}
 </style></head><body class="home"><div class="grain" aria-hidden="true"></div><header class="site-header" id="top"><div class="container header-inner">
     <a class="brand" href="/" aria-label="777XSZ, главная"><span class="brand-mark">7<span>7</span>7</span><span class="brand-name">XSZ<span class="brand-dot">.</span></span><span class="brand-caption">DIGITAL INTELLIGENCE<br>STUDIO</span></a>
     <nav class="nav-desktop" aria-label="Главная навигация"><a href="/" aria-current="page">Главная</a><a href="/catalog/" >Решения</a><a href="/ar-app/" >AR App</a><a href="/about/" >Обо мне</a><a href="/library/" >Библиотека</a></nav>
@@ -82,7 +86,7 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
     <div class="hero-overline"><span class="pulse"></span> 777XSZ / DIGITAL INTELLIGENCE STUDIO</div>
     <h1>Бизнес под контролем.<br><em>Жизнь в балансе.</em></h1>
     <p class="hero-description">Создаю системы автоматизации для предпринимателей, которые хотят меньше времени тратить на операционку и больше внимания уделять развитию бизнеса и жизни.</p>
-    <div class="hero-actions"><a class="button button--primary" href="/contact/"><span>Обсудить автоматизацию</span><span aria-hidden="true">↗</span></a><a class="button button--ghost" href="/catalog/"><span>Смотреть решения</span><span aria-hidden="true">↗</span></a></div>
+    <div class="hero-actions"><a class="button button--primary" href="/contact/"><span>Обсудить автоматизацию</span><span aria-hidden="true">↗</span></a><a class="button button--ghost" href="/courses/"><span>Читать бесплатные курсы</span><span aria-hidden="true">↗</span></a></div>
     <div class="hero-proof"><div class="proof-line"></div><span>Астана · Казахстан</span><span class="proof-sep"></span><span>Работа с проектами онлайн</span></div>
   </div><div class="hero-art"><div class="hero-art-aura"></div><div class="hero-orbit hero-orbit--one"></div><div class="hero-orbit hero-orbit--two"></div>
     <canvas id="hero-canvas" aria-label="Абстрактное трёхмерное интеллектуальное ядро" role="img"></canvas><div class="hero-art-fallback" aria-hidden="true"></div>
