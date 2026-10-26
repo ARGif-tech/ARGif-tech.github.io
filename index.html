@@ -328,4 +328,7 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-weight:600;letter-spacing:-.065em}h1{font-
     requestAnimationFrame(draw);
   }catch(err){canvas.style.display='none';console.warn('3D fallback active:',err.message)}
 })();
+</script><script id="xsz-photo-loader">
+/* Use photo only when uploaded and decodable; keep vector fallback otherwise. */
+(function(){'use strict';var hero=document.querySelector('.home .hero');if(!hero)return;var img=new Image();img.onload=function(){if(img.naturalWidth>0)hero.setAttribute('data-photo-ready','true')};img.onerror=function(){hero.removeAttribute('data-photo-ready')};img.src='/assets/777xsz-hero-entrepreneur-astana.webp';})();
 </script></body></html>
