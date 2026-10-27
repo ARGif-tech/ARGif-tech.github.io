@@ -1,0 +1,8 @@
+/* Shared accessibility enhancements; all page content remains available without JS. */
+(()=>{'use strict';const main=document.querySelector('main');const lang=document.documentElement.lang;
+if(main){if(!main.id)main.id='main-content';const a=document.createElement('a');a.className='xsz-skip';a.href='#'+main.id;a.textContent=lang==='en'?'Skip to content':lang==='kk'?'Мазмұнға өту':'Перейти к содержимому';document.body.prepend(a)}
+const oldMenu=document.querySelector('[data-menu]');const nav=document.querySelector('.xsz-legacy .site-header .nav');if(oldMenu&&nav){oldMenu.setAttribute('aria-controls',nav.id||'mainNav');document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('open');oldMenu.setAttribute('aria-expanded','false');oldMenu.focus()}})}
+// A transformed offscreen drawer must not leave invisible links in the tab order.
+const drawer=document.querySelector('.cart-drawer');if(drawer){let opener=null;const sync=()=>{const open=drawer.classList.contains('open');drawer.inert=!open;if(open)opener=document.activeElement;};sync();new MutationObserver(sync).observe(drawer,{attributes:true,attributeFilter:['class']});drawer.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const all=[...drawer.querySelectorAll('a[href],button:not([disabled])')];const first=all[0],last=all.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}})}
+if(!document.getElementById('wa777-loader')&&!document.querySelector('script[src*="whatsapp-widget.js"]')){const s=document.createElement('script');s.id='wa777-loader';s.src='/whatsapp-widget.js?v=20261027';s.defer=true;document.head.append(s)}
+})();

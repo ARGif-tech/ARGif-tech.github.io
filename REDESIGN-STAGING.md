@@ -1,17 +1,5 @@
-# 777xsz Premium Redesign — staging
+# 777XSZ premium cinematic v2
 
-Эта ветка создана для безопасной интеграции нового дизайна и библиотеки, без изменения опубликованного сайта.
+This branch completes the premium design across the primary 777XSZ site. Shared styles and scripts replace duplicated prototype layers; reading pages and translated routes retain existing content and URLs.
 
-## Что должно сохраниться
-- Текущие страницы, SEO, sitemap.xml, CNAME и верификация поисковых систем.
-- Существующие курсы, ссылки и функциональность.
-- Рабочие интеграции и WhatsApp.
-
-## Что добавляется после проверки
-- Кинематографичный дизайн с казахским предпринимателем.
-- Адаптивная библиотека с чтением книг, оглавлением и закладками.
-- Русский, казахский и английский интерфейсы.
-- Оплата скачивания только после подключения и проверки платёжного механизма.
-
-## Статус
-Прототипы существуют отдельно. Полные тексты курсов и платёжная интеграция ещё не подтверждены. Не объединять эту ветку с main до тестирования и утверждения содержимого.
+See `REDESIGN-RELEASE-CHECKLIST.md` for reproducible checks, verification limits and rollback instructions. The site owner authorized publication after successful checks on 27 October 2026. No additional content approval gate applies to this release.

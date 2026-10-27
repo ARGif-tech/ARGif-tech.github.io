@@ -1,0 +1,106 @@
+/* Shared finishing layer for all 777XSZ templates. */
+:root{--luxe-gold:#d7b172;--luxe-ink:#f6ead4;--luxe-muted:#c8c7b9;--luxe-line:#d7b17236;color-scheme:dark}
+body{background:#07110e;color:var(--luxe-ink)}
+body:not(.xsz-reader-page){font-family:Manrope,'Segoe UI',Arial,sans-serif}
+.xsz-modern .grain{display:none}
+.xsz-modern .container{width:min(calc(100% - 80px),1280px)}
+h1,h2,h3{overflow-wrap:break-word}p,a,li{overflow-wrap:break-word}
+.xsz-modern h1,.xsz-library h1,.xsz-reader-page h1,.xsz-legacy h1{font-family:Georgia,'Times New Roman',serif!important;font-weight:400;letter-spacing:-.045em!important;text-wrap:balance}
+.xsz-modern .section{padding-block:100px}
+.xsz-modern .section h2,.xsz-modern .final-cta h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.045em}
+.xsz-modern .text-dim{color:#a5b3a7}
+.xsz-modern .site-header{background:#0a1512;border-color:var(--luxe-line);backdrop-filter:none}
+.xsz-modern .brand-caption{color:#c1b79f}
+.xsz-modern .nav-desktop{gap:22px}
+.xsz-modern .header-contact{background:#d7b172;color:#101811}
+.xsz-modern .button{border-radius:7px;white-space:normal;line-height:1.4;padding-block:14px}
+.xsz-modern .hero-actions{flex-wrap:wrap}
+.xsz-modern .service-card,.xsz-modern .detail-block,.xsz-modern .other-card{border-color:var(--luxe-line);background:linear-gradient(145deg,#17281f,#0d1915);border-radius:16px}
+.xsz-modern .service-card:hover,.xsz-modern .other-card:hover{border-color:#d7b1728c}
+.xsz-modern .detail-hero,.xsz-modern .page-hero{background:radial-gradient(ellipse at 85% 10%,#34503b80,transparent 55%),#0b1813}
+.xsz-modern .detail-hero h1{font-weight:400}
+.xsz-modern .detail-content h2{color:#e7c78e}
+.xsz-modern .footer{background:#08110e;border-top:1px solid var(--luxe-line)}
+.xsz-languages{display:flex;gap:18px;padding:20px 0;font-size:12px;letter-spacing:.12em;border-top:1px solid var(--luxe-line)}
+.xsz-languages a{padding:10px 0;color:#d7b172}
+.xsz-skip{position:fixed;top:8px;left:12px;transform:translateY(-180%);z-index:500;padding:12px 20px;background:#f6ead4;color:#10231a;border-radius:5px}
+.xsz-skip:focus{transform:none}
+.xsz-modern .xsz-cinema-hero{width:min(calc(100% - 80px),1280px);margin:50px auto 100px}
+.xsz-modern .xsz-cinema-book:nth-child(3n+2),.xsz-luxe-book:nth-child(3n+2){background:linear-gradient(90deg,#0009,#ffffff18 3%,transparent 9%),radial-gradient(ellipse at 75% 20%,#685743,transparent 55%),#182421}
+.xsz-modern .xsz-cinema-book:nth-child(3n),.xsz-luxe-book:nth-child(3n){background:linear-gradient(90deg,#0009,#ffffff18 3%,transparent 9%),radial-gradient(ellipse at 75% 20%,#49625c,transparent 55%),#0b1917}
+/* A single, predictable hero composition replaces stacked prototype rules. */
+.home .hero{min-height:0!important;isolation:isolate;background:#07110e!important}
+.home .hero::before{inset:0;width:auto;height:auto;aspect-ratio:auto;border-radius:0;z-index:-2;background:linear-gradient(90deg,#07110ef5 0%,#07110ec9 45%,#07110e10 100%),url('/assets/777xsz-hero-entrepreneur-astana.webp') center/cover no-repeat!important}
+.home .hero::after{inset:0;z-index:-1;background:linear-gradient(0deg,#07110e,transparent 35%)}
+.home .hero-inner{display:block;min-height:720px!important;padding-block:90px;isolation:isolate}
+.home .hero-copy{padding:0!important;max-width:750px!important}
+.home .hero h1{font-size:clamp(54px,5.5vw,84px)!important;line-height:1.06!important;max-width:14ch!important;margin:30px 0;font-weight:400;letter-spacing:-.045em!important}
+.home .hero-description{max-width:46ch!important;font-size:17px!important;color:#e3e6dc!important;line-height:1.8}
+.home .hero .hero-actions{gap:12px;max-width:740px;margin-top:32px}
+.home .hero .hero-actions a{gap:20px;min-height:56px}
+.home .hero-proof{margin-top:34px;flex-wrap:wrap;color:#d1c9b7}
+.home .hero-art,.home .hero-side-note{display:none!important}
+.home .hero-overline{font-size:10px;line-height:1.7;letter-spacing:.16em;color:#e2bf84!important}
+.home .trust-band{background:#101f18;border-color:var(--luxe-line)}
+.home .hero .pulse::after{animation:none}
+/* Translated pages and case studies retain their content and controls. */
+.xsz-legacy .page-head{padding-top:72px;padding-bottom:65px;position:relative}
+.xsz-legacy .page-head::before{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 90% 15%,#38513b88,transparent 60%)}
+.xsz-legacy h1{font-size:clamp(42px,5.4vw,78px);line-height:1.08}
+.xsz-legacy h2{font-family:Georgia,'Times New Roman',serif;font-weight:400}
+.xsz-legacy .offer-card,.xsz-legacy .detail-block,.xsz-legacy .contact-panel,.xsz-legacy .pain,.xsz-legacy .step{border-color:var(--luxe-line);background:linear-gradient(140deg,#1b3025,#0b1813);border-radius:16px}
+.xsz-legacy .btn-gold{background:#d7b172;color:#101811;border-radius:7px}
+.xsz-legacy .product-art{border-color:#d7b17266;background:radial-gradient(ellipse,#8a764433,transparent 65%),#0c1d16;box-shadow:inset 0 0 70px #d7b17210}
+.xsz-legacy .hero{background:radial-gradient(ellipse at 80% 20%,#344f33,transparent 70%);border-bottom:1px solid var(--luxe-line)}
+.xsz-legacy .site-footer{background:#091510}
+/* Reading room: dark covers, warm paper and high-contrast text. */
+.xsz-reader-page header{position:relative;backdrop-filter:none;background:#0b1813}
+.xsz-reader-page .hero,.xsz-library .hero{background:radial-gradient(ellipse at 82% 10%,#3e5134aa,transparent 60%),#0c1b14;border-bottom:1px solid var(--luxe-line);padding-block:70px}
+.xsz-reader-page .hero h1,.xsz-library .hero h1{font-size:clamp(38px,5vw,70px);font-weight:400;color:#f6ead4}
+.xsz-reader-page .hero-link{background:#d7b172;color:#101811}
+.xsz-reader-page .article{background:#f5efdf;color:#24362b;box-shadow:0 25px 80px #0005,inset 7px 0 #dfd4b8;border-radius:5px 18px 18px 5px;color-scheme:light}
+.xsz-reader-page .article .lesson h2{color:#304d37!important}
+.xsz-reader-page .article .lesson h3{color:#304d37}
+.xsz-reader-page .article .lesson{border-color:#bfbba660;scroll-margin-top:24px}
+.xsz-reader-page .toc,.xsz-library .aside{background:#12241b;border-color:var(--luxe-line);max-height:80vh;overflow:auto}
+.xsz-reader-page .toc{top:24px}
+.xsz-reader-page .xsz-course-controls{margin-bottom:30px}
+.xsz-reader-page .xsz-course-controls strong{color:#f5d7a0}
+.xsz-reader-page .progress{top:0}
+.xsz-library .nav{background:#0a1812;border-color:var(--luxe-line)}
+.xsz-library .nav .wrap{padding-block:12px}
+.xsz-library .reading{max-width:none;min-width:0;padding:clamp(22px,4vw,52px);background:#f5efdf;color:#24362b;border-radius:5px 16px 16px 5px;box-shadow:inset 7px 0 #dfd4b8,0 24px 60px #0005;color-scheme:light}
+.xsz-library .reading p,.xsz-library .reading li,.xsz-library .reading strong,.xsz-library .page p{color:#24362b}
+.xsz-library .reading h2,.xsz-library .reading h3{font-family:Georgia,'Times New Roman',serif;color:#304d37;border-color:#c6b78c70;scroll-margin-top:25px}
+.xsz-library .reading a{color:#385b38;text-decoration:underline}
+.xsz-library .reading blockquote,.xsz-library .reading pre,.xsz-library .reading code{background:#e6e7d7;color:#203a2c}
+.xsz-library .reading td,.xsz-library .reading th{border-color:#b6bba8;color:#24362b}
+.xsz-library .book-title{font:38px/1.15 Georgia,serif;color:#304d37;margin-bottom:35px}
+.xsz-library .card{background:linear-gradient(110deg,#0005,transparent 12%),radial-gradient(ellipse at 90% 5%,#5b6141,transparent 65%),#10261b;border:1px solid #d7b17266;border-radius:4px 15px 15px 4px;box-shadow:inset 4px 0 #ad8b56,4px 12px 25px #0005;min-height:265px;padding:28px;transition:transform .2s}
+.xsz-library .card:hover{transform:translateY(-4px);text-decoration:none}
+.xsz-library .card h2{font:29px/1.15 Georgia,serif;color:#f6ead4}
+.xsz-library .card p{color:#d2d4c1}
+.xsz-library .notice{background:#14271c;border-color:#d7b172;color:#becbbd}
+.xsz-library .buttons{margin-bottom:25px}
+.xsz-library .reading-controls{padding:18px;margin:0 0 30px;border:1px solid #c4ad78;background:#e9e3cf;border-radius:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.xsz-library .reading-controls button{font:600 13px/1.4 inherit;background:#28442f;color:#fff5dc;border:0;border-radius:5px;padding:12px;cursor:pointer;min-height:44px}
+.xsz-library .reading-controls span{font-size:13px;color:#29402c;flex-basis:100%}
+.xsz-library .foot{background:#091510;border-color:var(--luxe-line)}
+@media(min-width:1001px) and (max-width:1240px){.xsz-modern .brand-caption{display:none}.xsz-modern .nav-desktop{gap:16px}}
+@media(max-width:1000px){.xsz-modern .nav-desktop{display:none}.xsz-modern .nav-toggle{display:block}.xsz-modern .nav-mobile:not([hidden]){display:grid}.xsz-modern .header-actions{margin-left:auto}.home .hero-inner{min-height:640px!important;padding-block:65px}.home .hero-copy{max-width:660px!important}}
+@media(max-width:700px){.xsz-modern .container{width:calc(100% - 36px)}.xsz-modern .section{padding-block:64px}.xsz-modern .xsz-cinema-hero{width:calc(100% - 36px);margin-block:35px 60px}.xsz-modern .hero-actions{display:grid;grid-template-columns:1fr}.xsz-modern .brand-caption{display:none}.home .hero-inner{min-height:0!important;padding:60px 0 65px!important}.home .hero::before{background:linear-gradient(180deg,#07110e40,#07110ed9 40%,#07110e 95%),url('/assets/777xsz-hero-entrepreneur-astana.webp') 40% top/auto 450px no-repeat!important}.home .hero h1{font-size:clamp(39px,10vw,62px)!important;max-width:14ch!important;margin-top:36px}.home .hero-description{font-size:15px!important;max-width:38ch!important}.home .hero .hero-actions a{width:100%;max-width:100%;justify-content:space-between}.home .hero-proof{font-size:11px;gap:9px}.xsz-library .hero,.xsz-reader-page .hero{padding-block:45px}.xsz-library .columns{gap:22px}.xsz-library .aside{max-height:280px}.xsz-reader-page .bar{flex-wrap:wrap;padding-block:15px}.xsz-reader-page .nav a{font-size:12px;min-height:32px;display:inline-flex;align-items:center}.xsz-reader-page .toc{max-height:320px}.xsz-legacy .page-head{padding-block:45px}.xsz-legacy .hero-art{max-width:310px}.xsz-library .reading{padding:24px 19px}.xsz-library .wrap{padding-inline:18px}}
+@media(max-width:370px){.xsz-modern .header-contact{font-size:10px;padding:10px;gap:8px}.xsz-modern .header-inner{gap:8px}.xsz-modern .brand-mark,.xsz-modern .brand-name{font-size:1.7rem}.xsz-modern .header-actions{gap:4px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.home .hero-copy{animation:none!important;opacity:1!important}
+.home .hero h1{white-space:normal!important;color:#f6ead4!important}
+.home .hero h1 em{background:none!important;color:#e5bb73!important}
+.xsz-modern .detail-block{padding:28px}
+@media(max-width:700px){#wa777-button span{display:none}#wa777-button{width:52px;justify-content:center;padding:10px!important}.xsz-modern .footer,.xsz-library .foot,.xsz-reader-page .site-footer{padding-bottom:86px}}
+.xsz-modern .contact-grid>*,.xsz-legacy .product-heading>*,.xsz-legacy .hero>*{min-width:0}
+.xsz-modern .contact-panel input,.xsz-modern .contact-panel textarea{min-width:0;max-width:100%;box-sizing:border-box}
+.xsz-modern .form-submit{gap:12px;white-space:normal;max-width:100%;overflow-wrap:anywhere}
+.xsz-legacy .btn{white-space:normal;overflow-wrap:anywhere;min-width:0;max-width:100%;text-align:center}
+html[lang=kk] .xsz-legacy h1{overflow-wrap:anywhere}
+@media(max-width:370px){.xsz-modern .contact-intro h1{font-size:42px}.xsz-modern .contact-panel{padding:19px}.xsz-legacy h1{font-size:37px}.xsz-legacy .actions{min-width:0}.xsz-legacy .actions .btn{padding-inline:14px}}
+.xsz-modern .trust-inner>span,.xsz-modern .footer-bottom,.xsz-modern .footer-bottom span{color:#a3b3a7}
+.xsz-modern .service-card .catalog-card-title{font:600 1.65rem/1.25 Manrope,'Segoe UI',Arial,sans-serif;margin:0 0 12px;letter-spacing:-.045em}
