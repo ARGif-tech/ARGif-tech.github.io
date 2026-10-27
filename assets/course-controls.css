@@ -12,3 +12,7 @@
 /* Mobile reading controls: legible labels and comfortable tap targets. */
 @media(max-width:650px){.xsz-course-controls__actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.xsz-course-controls button{min-height:48px;padding:12px 10px;font-size:14px;line-height:1.35;overflow-wrap:anywhere}.xsz-course-position{font-size:13px}}
 @media(max-width:360px){.xsz-course-controls__actions{grid-template-columns:minmax(0,1fr)}}
+
+/* Visible current chapter in the table of contents, including keyboard users. */
+.reader-layout .toc a[aria-current="location"]{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+.reader-layout .toc a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
