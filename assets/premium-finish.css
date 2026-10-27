@@ -111,3 +111,10 @@ html[lang=kk] .xsz-legacy h1{overflow-wrap:anywhere}
 .xsz-modern .button{padding:13px 18px!important;gap:0!important;border-radius:10px!important}
 .xsz-modern .hero-actions a{width:auto;max-width:100%;min-width:0;justify-content:center!important}
 @media(max-width:680px){.xsz-modern .hero-actions{display:flex!important;flex-direction:column;align-items:stretch;gap:12px!important}.xsz-modern .hero-actions a{width:100%!important;min-height:48px!important;padding:13px 16px!important}.xsz-modern .section-more .button{width:100%;justify-content:center}.xsz-modern .header-contact{padding:10px 12px!important}}
+
+/* 777XSZ sitewide clean controls v2 */
+/* Decorative symbols do not belong in oversized tiles or CTAs. */
+.service-symbol,.service-arrow,.problem-icon,.mini-panel.p2,.xsz-modern .service-link>span,.xsz-modern .button>span[aria-hidden="true"],.xsz-modern .header-contact>span[aria-hidden="true"],.xsz-legacy .btn>span[aria-hidden="true"],.xsz-legacy .btn-gold>span[aria-hidden="true"]{display:none!important}
+/* Preserve useful links but keep the controls restrained on every language and course page. */
+a.button,a.btn,a.hero-link,a.header-contact,a.hero-cta,a.small-cta a,button.btn,button.button{box-sizing:border-box!important;max-width:100%!important;min-width:0!important;min-height:44px!important;padding:12px 18px!important;font-size:clamp(14px,3.7vw,16px)!important;line-height:1.4!important;overflow-wrap:anywhere!important;white-space:normal!important;border-radius:10px!important;gap:10px!important;box-shadow:none!important}
+@media(max-width:680px){.xsz-legacy .hero-actions,.xsz-modern .hero-actions{max-width:100%;gap:10px!important}.xsz-legacy .btn,.xsz-modern .button{max-width:100%!important}.xsz-legacy .hero-actions a,.xsz-modern .hero-actions a{min-height:46px!important}.service-card,.course-card,.offer-card{min-width:0;overflow-wrap:anywhere}}
