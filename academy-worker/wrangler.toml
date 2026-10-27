@@ -1,0 +1,14 @@
+name = "777xsz-academy"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+# Configure after creating resources. Do not commit credentials.
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "777xsz-academy"
+# database_id = "REPLACE_WITH_D1_DATABASE_ID"
+#
+# [[r2_buckets]]
+# binding = "COURSES"
+# bucket_name = "777xsz-academy-private"
