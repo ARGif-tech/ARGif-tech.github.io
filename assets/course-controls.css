@@ -8,3 +8,7 @@
 .xsz-course-controls button:focus-visible{outline:3px solid #e5c47b;outline-offset:2px}
 .reader-layout .article .lesson{scroll-margin-top:24px}
 @media(max-width:650px){.xsz-course-controls{padding:13px}.xsz-course-controls__actions{display:grid;grid-template-columns:1fr 1fr}.xsz-course-controls button{padding:10px 7px;font-size:11px}}
+
+/* Mobile reading controls: legible labels and comfortable tap targets. */
+@media(max-width:650px){.xsz-course-controls__actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.xsz-course-controls button{min-height:48px;padding:12px 10px;font-size:14px;line-height:1.35;overflow-wrap:anywhere}.xsz-course-position{font-size:13px}}
+@media(max-width:360px){.xsz-course-controls__actions{grid-template-columns:minmax(0,1fr)}}
