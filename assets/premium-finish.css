@@ -104,3 +104,10 @@ html[lang=kk] .xsz-legacy h1{overflow-wrap:anywhere}
 @media(max-width:370px){.xsz-modern .contact-intro h1{font-size:42px}.xsz-modern .contact-panel{padding:19px}.xsz-legacy h1{font-size:37px}.xsz-legacy .actions{min-width:0}.xsz-legacy .actions .btn{padding-inline:14px}}
 .xsz-modern .trust-inner>span,.xsz-modern .footer-bottom,.xsz-modern .footer-bottom span{color:#a3b3a7}
 .xsz-modern .service-card .catalog-card-title{font:600 1.65rem/1.25 Manrope,'Segoe UI',Arial,sans-serif;margin:0 0 12px;letter-spacing:-.045em}
+
+/* 777XSZ: remove decorative arrow buttons and oversized mobile CTA chrome */
+.xsz-modern .button>span[aria-hidden="true"],.xsz-modern .header-contact>span[aria-hidden="true"],.xsz-modern .service-arrow,.xsz-modern .service-link>span,.xsz-modern .problem-icon{display:none!important}
+.xsz-modern .button,.xsz-modern .header-contact{font-size:clamp(14px,3.7vw,16px)!important;line-height:1.35!important;min-height:44px!important;max-width:100%!important;box-sizing:border-box!important;white-space:normal!important;overflow-wrap:anywhere!important}
+.xsz-modern .button{padding:13px 18px!important;gap:0!important;border-radius:10px!important}
+.xsz-modern .hero-actions a{width:auto;max-width:100%;min-width:0;justify-content:center!important}
+@media(max-width:680px){.xsz-modern .hero-actions{display:flex!important;flex-direction:column;align-items:stretch;gap:12px!important}.xsz-modern .hero-actions a{width:100%!important;min-height:48px!important;padding:13px 16px!important}.xsz-modern .section-more .button{width:100%;justify-content:center}.xsz-modern .header-contact{padding:10px 12px!important}}
