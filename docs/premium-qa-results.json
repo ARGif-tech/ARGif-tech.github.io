@@ -1,0 +1,111 @@
+{
+  "responsive": {
+    "runs": 530,
+    "pages": 106,
+    "widths": [
+      320,
+      375,
+      390,
+      768,
+      1440
+    ],
+    "failures": [],
+    "checks": [
+      "Mobile menu opens",
+      "Mobile menu closes with Escape",
+      "Catalog filter all",
+      "Catalog filter AI",
+      "Catalog filter SOCIAL",
+      "Catalog filter BUILD",
+      "Catalog filter PRODUCTION",
+      "Catalog filter LIBRARY",
+      "Catalog filter PRODUCT",
+      "Catalog filter BRAND",
+      "Inquiry preview appears",
+      "WhatsApp message has expected recipient and text",
+      "Inquiry can be edited",
+      "Next chapter /courses/ai-avatar/",
+      "Bookmark survives reload /courses/ai-avatar/",
+      "Next chapter /courses/ai-avtomatizaciya/",
+      "Bookmark survives reload /courses/ai-avtomatizaciya/",
+      "Next chapter /courses/ai-multfilmy/",
+      "Bookmark survives reload /courses/ai-multfilmy/",
+      "Next chapter /courses/ai-ugc-reklama/",
+      "Bookmark survives reload /courses/ai-ugc-reklama/",
+      "Next chapter /courses/elevenlabs-ozvuchka/",
+      "Bookmark survives reload /courses/elevenlabs-ozvuchka/",
+      "Next chapter /courses/instagram-smm/",
+      "Bookmark survives reload /courses/instagram-smm/",
+      "Next chapter /courses/instagram-target/",
+      "Bookmark survives reload /courses/instagram-target/",
+      "Next chapter /courses/neyrofotosessiya/",
+      "Bookmark survives reload /courses/neyrofotosessiya/",
+      "Book bookmark survives reload",
+      "Shortlist dialog opens",
+      "Closed shortlist is not focusable",
+      "Course text available without JavaScript"
+    ]
+  },
+  "lighthouse_mobile_lab": [
+    {
+      "route": "/",
+      "scores": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "lcp": 1951.63,
+      "cls": 0.014023136022566765,
+      "failed": []
+    },
+    {
+      "route": "/catalog/",
+      "scores": {
+        "performance": 0.9,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "lcp": 1804.5513,
+      "cls": 0.1968788181366939,
+      "failed": []
+    },
+    {
+      "route": "/contact/",
+      "scores": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "lcp": 1652.6487,
+      "cls": 0.01558004028588192,
+      "failed": []
+    },
+    {
+      "route": "/courses/instagram-smm/",
+      "scores": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "lcp": 1652.82165,
+      "cls": 0.001445562436014553,
+      "failed": []
+    },
+    {
+      "route": "/library/books/ai-bez-haosa/",
+      "scores": {
+        "performance": 0.87,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "lcp": 1954.13805,
+      "cls": 0.2124293987604395,
+      "failed": []
+    }
+  ]
+}
