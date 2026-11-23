@@ -1,0 +1,23 @@
+name: iBot web preview checks
+on:
+  push:
+    branches: [feature/ibot-web-app]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  ibot-web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate browser JavaScript
+        run: node --check assets/ibot-app.js
+      - name: Validate web interface security assumptions
+        run: node scripts/check-ibot-web.mjs
+      - name: Verify old published routes
+        run: python3 scripts/check-site.py

@@ -1,67 +1,115 @@
-<!doctype html><html lang="ru"><head>
-    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>777XSZ | AI-агенты и автоматизация бизнеса | Айдархан Рамазанов</title><link rel="stylesheet" href="/assets/site-base.css?v=20261027"><meta name="description" content="AI-агенты, автоматизация бизнес-процессов, интеграции CRM и 1С. Айдархан Рамазанов, 777xsz, Астана, Казахстан.">
-    <meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#0B1414">
-    <meta property="og:type" content="website"><meta property="og:title" content="777XSZ | AI-агенты и автоматизация бизнеса | Айдархан Рамазанов"><meta property="og:description" content="AI-агенты, автоматизация бизнес-процессов, интеграции CRM и 1С. Айдархан Рамазанов, 777xsz, Астана, Казахстан.">
-    <meta property="og:site_name" content="777XSZ Digital Intelligence Studio"><link rel="icon" href="/favicon.png" type="image/png">
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="iBot. Личный интеллектуальный помощник для общения, идей и повседневных задач.">
+  <meta name="robots" content="index,follow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>iBot · AR App Universal</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/ibot-mark.svg">
+  <link rel="stylesheet" href="/assets/ibot-app.css?v=2">
+  <script src="/assets/ibot-app.js?v=2" defer></script>
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar" id="sidebar" aria-label="Боковое меню">
+      <div class="sidebar-top">
+        <a class="brand" href="/" aria-label="iBot, главная">
+          <span class="brand-mark" aria-hidden="true"><span class="mark-core"></span><span class="mark-ring"></span></span>
+          <span class="brand-name">iBot</span>
+        </a>
+        <button type="button" class="icon-button sidebar-dismiss" id="closeSidebar" aria-label="Закрыть меню"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <button type="button" class="new-chat" id="newChat">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        <span>Новая беседа</span>
+        <kbd>Ctrl K</kbd>
+      </button>
+      <div class="sidebar-section">
+        <div class="section-heading">Меню</div>
+        <button class="nav-link current" type="button" id="navChats" aria-current="page">
+          <svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l1.9-3.8A7.5 7.5 0 1 1 20 11.5Z"/></svg>
+          Чат
+        </button>
+      </div>
+      <div class="sidebar-section history-section">
+        <div class="section-heading">Недавние беседы <span id="historyCount">0</span></div>
+        <div id="chatHistory" class="chat-history" aria-label="Текущие беседы"></div>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-footnote">iBot · AR App Universal</div>
+        <button type="button" class="account" id="accountButton" aria-label="Состояние подключения">
+          <span class="account-avatar">i</span>
+          <span class="account-copy"><b>iBot</b><small id="accountStatus">Ожидание подключения</small></span>
+          <svg viewBox="0 0 24 24"><path d="m9 9 3 3 3-3"/></svg>
+        </button>
+      </div>
+    </aside>
 
+    <button type="button" class="sidebar-overlay" id="sidebarOverlay" aria-label="Закрыть меню" tabindex="-1"></button>
 
+    <div class="main-panel">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" class="icon-button menu-toggle" id="openSidebar" aria-label="Открыть меню"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+          <div class="topbar-product"><b>Чат с iBot</b><span>Ваш интеллектуальный помощник</span></div>
+        </div>
+        <div class="topbar-actions">
+          <span class="connection" id="connection" role="status"><span class="connection-dot"></span><span id="connectionLabel">Проверка соединения</span></span>
+          <button class="icon-button help-button" id="helpButton" type="button" aria-label="Информация о подключении"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.8 9.5a2.5 2.5 0 1 1 4 2c-1.2 1-1.8 1.4-1.8 2.7M12 17h.01"/></svg></button>
+        </div>
+      </header>
 
-  <link rel="canonical" href="https://777xsz.shop/"><link rel="alternate" hreflang="ru" href="https://777xsz.shop/"><link rel="alternate" hreflang="kk" href="https://777xsz.shop/kk/"><link rel="alternate" hreflang="en" href="https://777xsz.shop/en/"><link rel="alternate" hreflang="x-default" href="https://777xsz.shop/"><meta property="og:url" content="https://777xsz.shop/"><meta property="og:image" content="https://777xsz.shop/images/aidarkhan-ramazanov.webp"><meta name="google-site-verification" content="eOGaSW9l7Fg1Qx8_BBlE1eT_-T0uvamgeQMSkSgzR2M"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Айдархан Рамазанов | 777xsz · AI • автоматизация • цифровые продукты", "url": "https://777xsz.shop/", "inLanguage": "ru", "about": {"@type": "Person", "@id": "https://777xsz.shop/#person", "name": "Айдархан Рамазанов", "alternateName": ["777xsz", "@777xsz", "Aidarkhan Ramazanov"], "url": "https://777xsz.shop/", "image": "https://777xsz.shop/images/aidarkhan-ramazanov.webp", "jobTitle": "Специалист по AI-автоматизации", "telephone": "+77760001966", "address": {"@type": "PostalAddress", "addressLocality": "Astana", "addressCountry": "KZ"}, "homeLocation": {"@type": "City", "name": "Astana", "containedInPlace": {"@type": "Country", "name": "Kazakhstan"}}, "knowsLanguage": ["ru", "kk", "en"], "knowsAbout": ["AI-автоматизация", "AI-боты", "AI-агенты", "Автоматизация бизнес-процессов", "CRM", "1С", "Instagram", "TikTok", "YouTube", "Личный бренд", "Видеопродакшн", "AI automation", "Chatbots", "Business process automation"], "sameAs": ["https://www.instagram.com/777xsz/", "https://www.threads.net/@777xsz", "https://www.youtube.com/@777xsz", "https://www.tiktok.com/@777xsz"]}}</script><script type="application/ld+json" data-entity="777xsz">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://777xsz.shop/#service", "logo": "https://777xsz.shop/favicon.png", "name": "AI-боты и автоматизация бизнеса — Айдархан Рамазанов (777xsz)", "description": "AI-боты, автоматизация бизнеса, CRM и 1С, сайты и приложения, видеосъёмка и развитие личного бренда. Астана и онлайн.", "url": "https://777xsz.shop/", "image": "https://777xsz.shop/images/aidarkhan-ramazanov.webp", "telephone": "+77760001966", "address": {"@type": "PostalAddress", "addressLocality": "Astana", "addressCountry": "KZ"}, "areaServed": [{"@type": "City", "name": "Astana"}, {"@type": "Country", "name": "Kazakhstan"}], "availableLanguage": ["ru", "kk", "en"], "founder": {"@id": "https://777xsz.shop/#person"}, "sameAs": ["https://www.instagram.com/777xsz/", "https://www.threads.net/@777xsz", "https://www.youtube.com/@777xsz", "https://www.tiktok.com/@777xsz"]}</script><script type="application/ld+json" data-entity="777xsz">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://777xsz.shop/#website", "name": "777xsz", "alternateName": "Айдархан Рамазанов", "url": "https://777xsz.shop/", "inLanguage": ["ru", "kk", "en"], "publisher": {"@id": "https://777xsz.shop/#person"}}</script><link rel="stylesheet" href="/assets/cinematic-hero-v2.css"><link rel="stylesheet" href="/assets/cinematic-sitewide-v2.css">
-<link rel="preload" as="image" href="/assets/777xsz-hero-entrepreneur-astana.webp"><link rel="stylesheet" href="/assets/premium-finish.css?v=20261027"><script src="/assets/premium-finish.js?v=20261027" defer></script><link rel="stylesheet" href="/assets/fonts/manrope.css"><!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    window.__xszMetrika113969400 = true;
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113969400', 'ym');
-    ym(113969400, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<!-- /Yandex.Metrika counter -->
-</head><body class="xsz-modern home"><noscript><div><img src="https://mc.yandex.ru/watch/113969400" style="position:absolute; left:-9999px;" alt="" /></div></noscript><div class="grain" aria-hidden="true"></div><header class="site-header" id="top"><div class="container header-inner">
-    <a class="brand" href="/" aria-label="777XSZ, главная"><span class="brand-mark">7<span>7</span>7</span><span class="brand-name">XSZ<span class="brand-dot">.</span></span><span class="brand-caption">DIGITAL INTELLIGENCE<br>STUDIO</span></a>
-    <nav class="nav-desktop" aria-label="Главная навигация"><a href="/" aria-current="page">Главная</a><a href="/catalog/" >Решения</a><a href="/ar-app/" >AR App</a><a href="/about/" >Обо мне</a><a href="/library/" >Библиотека</a><a href="/courses/">Курсы</a></nav>
-    <div class="header-actions"><a class="header-contact" href="/contact/">Обсудить задачу <span aria-hidden="true">↗</span></a><button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button></div>
-  </div><nav id="mobile-nav" class="nav-mobile" aria-label="Мобильная навигация" hidden><a href="/">Главная<span aria-hidden="true">↗</span></a><a href="/catalog/">Решения<span aria-hidden="true">↗</span></a><a href="/ar-app/">AR App<span aria-hidden="true">↗</span></a><a href="/about/">Обо мне<span aria-hidden="true">↗</span></a><a href="/library/">Библиотека<span aria-hidden="true">↗</span></a><a href="/contact/">Контакты<span aria-hidden="true">↗</span></a><a href="/faq/">Условия<span aria-hidden="true">↗</span></a><a href="/courses/">Курсы<span aria-hidden="true">↗</span></a></nav></header><main id="main">
-  <section class="hero"><div class="container hero-inner"><div class="hero-copy">
-    <div class="hero-overline"><span class="pulse"></span> 777XSZ / DIGITAL INTELLIGENCE STUDIO</div>
-    <h1>Бизнес под контролем.<br><em>Жизнь в балансе.</em></h1>
-    <p class="hero-description">Создаю системы автоматизации для предпринимателей, которые хотят меньше времени тратить на операционку и больше внимания уделять развитию бизнеса и жизни.</p>
-    <div class="hero-actions"><a class="button button--primary" href="/contact/"><span>Обсудить автоматизацию</span><span aria-hidden="true">↗</span></a><a class="button button--ghost" href="/courses/"><span>Читать бесплатные курсы</span><span aria-hidden="true">↗</span></a></div>
-    <div class="hero-proof"><div class="proof-line"></div><span>Астана · Казахстан</span><span class="proof-sep"></span><span>Работа с проектами онлайн</span></div>
-  </div></div><div class="hero-side-note">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></div></section>
+      <main class="conversation-wrap" id="conversationWrap">
+        <div class="welcome" id="welcome">
+          <div class="welcome-head">
+            <div class="welcome-orb" aria-hidden="true"><span class="orb-core"></span><span class="orb-orbit one"></span><span class="orb-orbit two"></span></div>
+            <p class="eyebrow">iBot</p>
+            <h1>Чем могу помочь?</h1>
+            <p class="welcome-subtitle">Задавайте вопросы, обсуждайте идеи и решайте задачи в одном чате.</p>
+          </div>
+          <div class="suggestions" aria-label="Примеры запросов">
+            <button type="button" class="suggestion" data-suggest="Помоги продумать стратегию развития моего бизнеса."><span class="suggestion-icon gold"><svg viewBox="0 0 24 24"><path d="M3 20V9M10 20V4M17 20v-7M2 20h20"/></svg></span><span>Развить бизнес<small>Планы, решения и процессы</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
+            <button type="button" class="suggestion" data-suggest="Помоги придумать сценарий видео и план монтажа."><span class="suggestion-icon rose"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3Z"/></svg></span><span>Создать видео<small>Сценарий, монтаж и идеи</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
+            <button type="button" class="suggestion" data-suggest="Помоги разработать приложение. Начни с вопросов о задаче и архитектуре."><span class="suggestion-icon blue"><svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-3 16"/></svg></span><span>Написать код<small>От идеи до приложения</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
+            <button type="button" class="suggestion" data-suggest="Помоги написать понятный, живой текст для моей задачи."><span class="suggestion-icon green"><svg viewBox="0 0 24 24"><path d="m14 5 5 5M5 19l4.5-1 9-9a2.1 2.1 0 0 0-3-3l-9 9L5 19Z"/></svg></span><span>Подготовить текст<small>Письма, статьи и документы</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
+          </div>
+        </div>
+        <div class="messages" id="messages" role="log" aria-live="polite" aria-relevant="additions text" hidden></div>
+        <div id="announcer" class="sr-only" aria-live="assertive"></div>
+      </main>
 
-  <section class="trust-band"><div class="container trust-inner"><span>ЧЕСТНЫЕ УСЛОВИЯ СОТРУДНИЧЕСТВА</span><div>Без скрытых платежей</div><div>Без навязанных подписок</div><div>Стоимость согласуем заранее</div></div></section>
-
-  <section class="section intro-section" id="approach"><div class="container"><div class="section-grid"><div><div class="eyebrow"><span class="eyebrow-mark">✳</span>ПРОБЛЕМА И РЕШЕНИЕ</div><h2>Технологии должны<br><span class="text-dim">освобождать время.</span></h2></div><div class="section-aside"><p>Пока команда вручную переносит заявки и повторяет одни и те же ответы, важные клиенты могут оставаться без внимания.</p><p>Мы начинаем с вашей задачи и подбираем решение, которое упрощает повседневную работу.</p><a class="text-link" href="/about/">Мой подход <span>↗</span></a></div></div>
-    <div class="problem-grid"><div class="problem-item"><div class="problem-icon">↗</div><h3>Долгие ответы</h3><p>AI-помощник может взять на себя частые вопросы и передавать сложные обращения сотруднику.</p></div><div class="problem-item"><div class="problem-icon">⌘</div><h3>Потерянные заявки</h3><p>Обращения попадают в одну понятную систему, чтобы команда не упускала клиентов.</p></div><div class="problem-item"><div class="problem-icon">◈</div><h3>Ручная рутина</h3><p>Повторяющиеся действия можно автоматизировать и освободить время для важных задач.</p></div></div>
-  </div></section>
-
-  <section class="section solutions-section" id="solutions"><div class="container"><div class="section-heading"><div class="eyebrow"><span class="eyebrow-mark">✳</span>НАПРАВЛЕНИЯ</div><div class="heading-flex"><h2>Решения, которые<br>работают <i>на задачу.</i></h2><p>Основные направления для развития вашего бизнеса. Другие услуги можно посмотреть в каталоге.</p></div></div>
-    <div class="featured-services"><a class="service-card service-card--featured" href="/ai-bot/" data-service-category="AI"><div class="service-card-top"><span class="service-num">AI / КЛИЕНТЫ</span><span class="service-arrow">↗</span></div><div class="service-symbol" aria-hidden="true">✳</div><div class="service-card-bottom"><h3>AI-бот для бизнеса</h3><p>Отвечает на типовые вопросы, помогает принимать обращения и передавать сложные диалоги человеку.</p><div class="service-link">Подробнее <span>↗</span></div></div></a><a class="service-card " href="/automation/" data-service-category="AI"><div class="service-card-top"><span class="service-num">WORKFLOW / ОПЕРАЦИИ</span><span class="service-arrow">↗</span></div><div class="service-symbol" aria-hidden="true">↗</div><div class="service-card-bottom"><h3>Автоматизация бизнес-процессов</h3><p>Связываем заявки, данные и задачи, чтобы команда меньше делала вручную.</p><div class="service-link">Подробнее <span>↗</span></div></div></a><a class="service-card " href="/crm-1c/" data-service-category="AI"><div class="service-card-top"><span class="service-num">SYSTEMS / ДАННЫЕ</span><span class="service-arrow">↗</span></div><div class="service-symbol" aria-hidden="true">⌘</div><div class="service-card-bottom"><h3>Интеграции CRM и 1С</h3><p>Соединяем работу с клиентами и учётные системы безопасным обменом данных.</p><div class="service-link">Подробнее <span>↗</span></div></div></a></div>
-    <div class="section-more"><span>Нужен сайт, контент или стратегия?</span><a class="button button--outline" href="/catalog/"><span>Открыть весь каталог</span><span aria-hidden="true">↗</span></a></div>
-  </div></section>
-
-  <section class="section flow-section"><div class="container"><div class="eyebrow"><span class="eyebrow-mark">✳</span>ОТ ХАОСА К СИСТЕМЕ</div><div class="flow-heading"><h2>Одно обращение.<br><span class="text-dim">Понятный маршрут.</span></h2><p>Пример того, как можно организовать работу с заявками.</p></div>
-    <div class="flow-demo"><div class="flow-tabs" role="tablist" aria-label="Пример автоматизации"><button role="tab" class="flow-tab active" aria-selected="true" data-flow="0">Клиент написал</button><button role="tab" class="flow-tab" aria-selected="false" data-flow="1">Запрос обработан</button><button role="tab" class="flow-tab" aria-selected="false" data-flow="2">Заявка в системе</button></div>
-      <div class="flow-visual"><div class="flow-visual-grid"></div><div class="flow-node flow-node--left"><span>ОБРАЩЕНИЕ</span><b>Новый запрос</b><small>Instagram или сайт</small></div><div class="flow-connection"><span></span><i></i><span></span></div><div class="flow-node flow-node--center"><div class="flow-node-glow"></div><span>ОБРАБОТКА</span><b>Вопрос понятен</b><small>Ответ или передача</small></div><div class="flow-connection"><span></span><i></i><span></span></div><div class="flow-node flow-node--right"><span>РЕЗУЛЬТАТ</span><b>Менеджер / CRM</b><small>Заявка под контролем</small></div></div>
-      <div class="flow-caption"><span class="caption-star">✳</span><p id="flow-description">Клиент оставляет вопрос через удобный канал связи.</p><span class="flow-demo-label">ПРИМЕР</span></div>
+      <div class="composer-zone">
+        <div class="notices">
+          <div id="gatewayNotice" class="gateway-notice" hidden><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Zm0 7v4m0 3h.01"/></svg><span id="gatewayNoticeText">iBot временно недоступен. Сообщения не отправляются.</span><button id="retryConnection" type="button">Повторить проверку</button></div>
+        </div>
+        <form class="composer" id="composer">
+          <label class="sr-only" for="messageInput">Сообщение для iBot</label>
+          <textarea id="messageInput" rows="1" placeholder="Напишите, что нужно сделать..." maxlength="12000" aria-label="Сообщение для iBot"></textarea>
+          <div class="composer-bottom">
+            <div class="composer-tools">
+              <button type="button" class="tool-button" id="attachButton" title="Прикрепление файлов пока недоступно" aria-label="Прикрепить файл"><svg viewBox="0 0 24 24"><path d="m20 11-8.7 8.7a5 5 0 0 1-7.1-7.1l10-10a3.5 3.5 0 0 1 5 5l-10 10a2 2 0 0 1-2.8-2.8l8.8-8.8"/></svg><span>Добавить</span></button>
+              <span class="tool-separator"></span>
+              <button type="button" class="tool-button" id="voiceButton" title="Голосовое общение пока недоступно" aria-label="Голосовое общение"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"/></svg><span>Голос</span></button>
+              <span class="composer-hint">Enter для отправки</span>
+            </div>
+            <button type="submit" class="send-button" id="sendButton" aria-label="Отправить сообщение" disabled><svg id="sendIcon" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
+          </div>
+        </form>
+        <p class="under-composer">iBot может ошибаться. Важную информацию следует проверять.</p>
+      </div>
     </div>
-  </div></section>
-
-  <section class="section product-section" id="arapp"><div class="container"><div class="product-shell"><div class="product-copy"><div class="eyebrow"><span class="eyebrow-mark">✳</span>НАШ ПРОДУКТ</div><span class="status-pill"><span class="pulse"></span> В РАЗРАБОТКЕ</span><h2>AR App<br><em>Universal.</em></h2><p>Готовим приложение, которое поможет владельцу бизнеса управлять задачами, заявками и рабочими инструментами в одном удобном интерфейсе.</p><ul class="product-points"><li>Простое управление</li><li>Доступ с телефона</li><li>Прозрачные условия без скрытых платежей</li></ul><a class="button button--ghost" href="/ar-app/"><span>Узнать о проекте</span><span aria-hidden="true">↗</span></a><small>Продукт ещё разрабатывается. Возможности и условия покупки объявим после проверки.</small></div>
-    <div class="product-visual" aria-label="Концептуальный интерфейс AR App Universal"><div class="app-window"><div class="app-window-top"><span class="app-window-mark">◈</span> AR APP <span class="app-window-dots">● ● ●</span></div><div class="app-window-body"><div class="app-sidebar"><i>◈</i><i>⌘</i><i>◉</i><i>≡</i></div><div class="app-dashboard"><small>ВСЁ В ОДНОМ МЕСТЕ</small><div class="app-title">Ваш бизнес.<br>Под вашим контролем.</div><div class="app-meter"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="app-mini-cards"><div><b>ЗАЯВКИ</b><small>Клиенты и обращения</small><strong>◈</strong></div><div><b>ЗАДАЧИ</b><small>Всё по плану</small><strong>↗</strong></div></div></div></div></div><div class="product-orb"></div></div></div></div></section>
-
-  <section class="section other-services"><div class="container"><div class="eyebrow"><span class="eyebrow-mark">✳</span>БОЛЬШЕ ВОЗМОЖНОСТЕЙ</div><div class="heading-flex"><h2>От идеи<br><span class="text-dim">до цифрового продукта.</span></h2><p>Дополнительные услуги для бизнеса, контента и личного бренда.</p></div><div class="other-grid"><a href="/web-apps/" class="other-card"><span>▧</span><h3>Сайты и приложения</h3><span class="other-arrow">↗</span></a><a href="/instagram/" class="other-card"><span>◎</span><h3>Упаковка и развитие Instagram</h3><span class="other-arrow">↗</span></a><a href="/youtube/" class="other-card"><span>▶</span><h3>YouTube: канал, Shorts, продвижение</h3><span class="other-arrow">↗</span></a><a href="/personal-brand/" class="other-card"><span>✦</span><h3>Развитие личного бренда</h3><span class="other-arrow">↗</span></a></div></div></section>
-
-  <section class="section founder-section"><div class="container"><div class="founder-card"><div class="founder-photo"><img loading="lazy" src="/images/aidarkhan-ramazanov.webp" alt="Айдархан Рамазанов, основатель 777xsz"><span>FOUNDER / 777XSZ</span></div><div class="founder-copy"><div class="eyebrow"><span class="eyebrow-mark">✳</span>ЧЕЛОВЕК ЗА ТЕХНОЛОГИЯМИ</div><h2>Технологии<br>с <em>ответственностью.</em></h2><p>Я Айдархан Рамазанов. Помогаю бизнесу внедрять AI-решения, создавать цифровые продукты и развивать контент. Для меня важны понятный результат и честные условия.</p><div class="founder-sign">Айдархан Рамазанов <span>Астана · Казахстан</span></div><a class="button button--outline" href="/about/"><span>Подробнее обо мне</span><span aria-hidden="true">↗</span></a></div></div></div></section>
-
-  <section class="section faq-section"><div class="container"><div class="faq-heading"><div class="eyebrow"><span class="eyebrow-mark">✳</span>ЧАСТЫЕ ВОПРОСЫ</div><h2>Без мелкого<br><span class="text-dim">шрифта.</span></h2></div><div class="faq-list"><details><summary>Сколько стоит автоматизация? <span>+</span></summary><p>Цена зависит от задачи и объёма работ. Перед началом проекта согласуем стоимость и всё, что входит в услугу.</p></details><details><summary>Будут ли скрытые платежи и подписки? <span>+</span></summary><p>Скрытых платежей и навязанных подписок нет. Если для задачи нужны сторонние платные сервисы или поддержка, заранее обсудим условия и стоимость.</p></details><details><summary>Можно ли подключить Instagram и CRM? <span>+</span></summary><p>Да, если выбранные сервисы поддерживают нужные подключения. Проверим возможность до начала работы.</p></details><details><summary>Гарантируете рост продаж? <span>+</span></summary><p>Обещаем только то, что можем проверить. Доход и количество заявок зависят не только от автоматизации.</p></details></div></div></section>
-
-  <section class="final-cta"><div class="container final-cta-inner"><div class="cta-glow"></div><div class="eyebrow"><span class="eyebrow-mark">✳</span>НАЧНЁМ С ВАШЕЙ ЗАДАЧИ</div><h2>Пора убрать<br><em>лишнюю рутину.</em></h2><p>Расскажите, где теряется время или заявки. Разберём сценарий и определим следующий шаг.</p><a class="button button--primary" href="/contact/"><span>Обсудить проект</span><span aria-hidden="true">↗</span></a><span class="cta-index">777 / INTELLIGENCE</span></div></section>
-  <section class="xsz-cinema-hero" aria-labelledby="xsz-library-premium-title"><span class="xsz-cinema-hero__kicker">777XSZ / ЦИФРОВАЯ БИБЛИОТЕКА</span><h2 id="xsz-library-premium-title">Знания, которые работают на вас.</h2><p>Восемь практических цифровых книг по продвижению, контенту и автоматизации. Читайте бесплатно прямо на сайте.</p><div class="xsz-cinema-book-grid"><a class="xsz-cinema-book" href="/courses/instagram-smm/" aria-label="Читать курс INSTAGRAM SMM"><span class="xsz-cinema-book__brand">777XSZ · КНИГА</span><span class="xsz-cinema-book__icon" aria-hidden="true">✦</span><strong class="xsz-cinema-book__title">INSTAGRAM SMM</strong><span class="xsz-cinema-book__bottom">ЧИТАТЬ БЕСПЛАТНО →</span></a><a class="xsz-cinema-book" href="/courses/instagram-target/" aria-label="Читать курс ТАРГЕТ И РЕКЛАМА"><span class="xsz-cinema-book__brand">777XSZ · КНИГА</span><span class="xsz-cinema-book__icon" aria-hidden="true">◈</span><strong class="xsz-cinema-book__title">ТАРГЕТ И РЕКЛАМА</strong><span class="xsz-cinema-book__bottom">ЧИТАТЬ БЕСПЛАТНО →</span></a><a class="xsz-cinema-book" href="/courses/neyrofotosessiya/" aria-label="Читать курс НЕЙРОФОТОСЕССИЯ"><span class="xsz-cinema-book__brand">777XSZ · КНИГА</span><span class="xsz-cinema-book__icon" aria-hidden="true">✧</span><strong class="xsz-cinema-book__title">НЕЙРОФОТОСЕССИЯ</strong><span class="xsz-cinema-book__bottom">ЧИТАТЬ БЕСПЛАТНО →</span></a><a class="xsz-cinema-book" href="/courses/ai-multfilmy/" aria-label="Читать курс ИИ-МУЛЬТФИЛЬМЫ"><span class="xsz-cinema-book__brand">777XSZ · КНИГА</span><span class="xsz-cinema-book__icon" aria-hidden="true">✳</span><strong class="xsz-cinema-book__title">ИИ-МУЛЬТФИЛЬМЫ</strong><span class="xsz-cinema-book__bottom">ЧИТАТЬ БЕСПЛАТНО →</span></a><a class="xsz-cinema-book" href="/courses/elevenlabs-ozvuchka/" aria-label="Читать курс ОЗВУЧКА И ГОЛОС"><span class="xsz-cinema-book__brand">777XSZ · КНИГА</span><span class="xsz-cinema-book__icon" aria-hidden="true">♫</span><strong class="xsz-cinema-book__title">ОЗВУЧКА И ГОЛОС</strong><span class="xsz-cinema-book__bottom">ЧИТАТЬ БЕСПЛАТНО →</span></a><a class="xsz-cinema-book" href="/courses/ai-avatar/" aria-label="Читать курс ЦИФРОВОЙ АВАТАР"><span class="xsz-cinema-book__brand">777XSZ · КНИГА</span><span class="xsz-cinema-book__icon" aria-hidden="true">◉</span><strong class="xsz-cinema-book__title">ЦИФРОВОЙ АВАТАР</strong><span class="xsz-cinema-book__bottom">ЧИТАТЬ БЕСПЛАТНО →</span></a><a class="xsz-cinema-book" href="/courses/ai-ugc-reklama/" aria-label="Читать курс AI UGC РЕКЛАМА"><span class="xsz-cinema-book__brand">777XSZ · КНИГА</span><span class="xsz-cinema-book__icon" aria-hidden="true">◆</span><strong class="xsz-cinema-book__title">AI UGC РЕКЛАМА</strong><span class="xsz-cinema-book__bottom">ЧИТАТЬ БЕСПЛАТНО →</span></a><a class="xsz-cinema-book" href="/courses/ai-avtomatizaciya/" aria-label="Читать курс АВТОМАТИЗАЦИЯ"><span class="xsz-cinema-book__brand">777XSZ · КНИГА</span><span class="xsz-cinema-book__icon" aria-hidden="true">⌘</span><strong class="xsz-cinema-book__title">АВТОМАТИЗАЦИЯ</strong><span class="xsz-cinema-book__bottom">ЧИТАТЬ БЕСПЛАТНО →</span></a></div><a class="xsz-cinema-hero__link" href="/courses/">Открыть библиотеку</a></section></main><footer class="footer"><div class="container">
-    <div class="footer-top"><div><a class="footer-logo" href="/">777<span>XSZ.</span></a><p>AI-агенты. Автоматизация.<br>Цифровые системы для бизнеса.</p></div><div class="footer-nav"><div><small>РАЗДЕЛЫ</small><a href="/catalog/">Все решения</a><a href="/ar-app/">AR App Universal</a><a href="/about/">Обо мне</a><a href="/library/">Библиотека</a><a href="/courses/">Бесплатные курсы</a></div><div><small>ИНФОРМАЦИЯ</small><a href="/contact/">Контакты</a><a href="/faq/">Условия работы</a><a href="/privacy.html">Обработка данных</a><a href="https://pay.kaspi.kz/pay/ooyyed06" rel="noopener noreferrer" target="_blank">Поддержать автора ↗</a><a href="https://wa.me/77760001966" rel="noopener noreferrer" target="_blank">WhatsApp ↗</a><a href="https://www.instagram.com/777xsz/" rel="noopener noreferrer" target="_blank">Instagram ↗</a></div></div></div>
-    <nav class="xsz-languages" aria-label="Язык сайта"><a href="/" lang="ru" aria-current="page">RU</a><a href="/kk/" lang="kk">ҚАЗ</a><a href="/en/" lang="en">EN</a></nav><div class="footer-bottom"><span>© 2026 Айдархан Рамазанов · 777xsz</span><span>Астана, Казахстан · Работа онлайн</span><a href="#top">Наверх ↑</a></div>
-  </div></footer><script src="/assets/site-base.js?v=20261027" defer></script></body></html>
+  </div>
+  <dialog class="status-dialog" id="statusDialog" aria-labelledby="dialogTitle">
+    <form method="dialog">
+      <div class="dialog-top"><span class="dialog-icon">i</span><button type="submit" class="icon-button" aria-label="Закрыть окно"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+      <h2 id="dialogTitle">iBot</h2>
+      <p id="dialogCopy">Сервис находится в подготовке. Отправка сообщений станет доступна после завершения подключения.</p>
+      <div class="dialog-tags"><span>Приватные беседы</span><span>Без рекламы</span></div>
+      <button type="submit" class="dialog-primary">Понятно</button>
+    </form>
+  </dialog>
+</body>
+</html>
