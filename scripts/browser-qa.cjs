@@ -3,6 +3,7 @@ const fs=require('fs'),path=require('path'),http=require('http');
 const root=path.resolve(__dirname,'..'),out=process.env.QA_OUTPUT||'/tmp/xsz-qa';fs.mkdirSync(out,{recursive:true});
 function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.name.startsWith('.')?[]:e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)])}
 const routes=walk(root).filter(p=>p.endsWith('.html')&&fs.readFileSync(p,'utf8').includes('premium-finish.css')).map(p=>'/'+path.relative(root,p).replace(/index\.html$/,''));
+if(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('id="sidebar"')&&!routes.includes('/'))routes.unshift('/');
 const server=http.createServer((req,res)=>{let p=path.join(root,decodeURIComponent(req.url.split('?')[0]));if(!p.startsWith(root)){res.writeHead(403);res.end();return}if(fs.existsSync(p)&&fs.statSync(p).isDirectory())p+='/index.html';if(!fs.existsSync(p)){res.writeHead(404);res.end();return}const types={'.css':'text/css','.js':'application/javascript','.webp':'image/webp','.png':'image/png','.svg':'image/svg+xml','.html':'text/html','.xml':'application/xml'};res.setHeader('Content-Type',types[path.extname(p)]||'application/octet-stream');res.end(fs.readFileSync(p))});
 (async()=>{await new Promise(r=>server.listen(8765,'127.0.0.1',r));const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_EXECUTABLE,args:['--no-sandbox','--disable-dev-shm-usage']});const failures=[],checks=[];let runs=0;
 for(const width of [320,375,390,768,1440]){
@@ -13,7 +14,23 @@ for(const width of [320,375,390,768,1440]){
  console.log('Checked',width,'px:',routes.length,'routes');await context.close();
 }
 const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});await context.route(/^https?:\/\/(?!127\.0\.0\.1)/,r=>r.abort());const p=await context.newPage();const assert=(v,m)=>{if(!v)throw Error(m);checks.push(m)};
-await p.goto('http://127.0.0.1:8765/');await p.locator('.nav-toggle').click();assert(await p.locator('#mobile-nav').isVisible(),'Mobile menu opens');await p.keyboard.press('Escape');assert(!(await p.locator('#mobile-nav').isVisible()),'Mobile menu closes with Escape');
+await p.goto('http://127.0.0.1:8765/');
+if(await p.locator('#openSidebar').count()){
+  await p.locator('#openSidebar').click();
+  assert(await p.locator('#sidebar').evaluate(e=>e.classList.contains('open')),'iBot sidebar opens');
+  await p.keyboard.press('Escape');
+  assert(!(await p.locator('#sidebar').evaluate(e=>e.classList.contains('open'))),'iBot sidebar closes with Escape');
+  assert(await p.locator('#messageInput').count()===1,'iBot chat input present');
+  await p.locator('#messageInput').fill('Проверка соединения');
+  await p.locator('#sendButton').click();
+  assert(await p.locator('#gatewayNotice').isVisible(),'iBot shows disconnected state instead of fabricating chat answers');
+  assert(await p.locator('#messages .message.assistant').count()===0,'iBot never fabricates assistant replies');
+}else{
+  await p.locator('.nav-toggle').click();
+  assert(await p.locator('#mobile-nav').isVisible(),'Mobile menu opens');
+  await p.keyboard.press('Escape');
+  assert(!(await p.locator('#mobile-nav').isVisible()),'Mobile menu closes with Escape');
+}
 await p.goto('http://127.0.0.1:8765/catalog/');for(const filter of await p.locator('[data-filter]').all()){await filter.click();assert(await filter.getAttribute('aria-pressed')==='true','Catalog filter '+await filter.getAttribute('data-filter'));}
 await p.goto('http://127.0.0.1:8765/contact/');await p.locator('#inquiry-name').fill('Проверка');await p.locator('#inquiry-task').fill('Проверка формы без отправки');await p.locator('input[type=checkbox]').check();await p.locator('#inquiry-form button[type=submit]').click();assert(await p.locator('#inquiry-result').isVisible(),'Inquiry preview appears');const href=await p.locator('#whatsapp-inquiry').getAttribute('href');assert(href.startsWith('https://wa.me/77760001966?text=')&&decodeURIComponent(href).includes('Проверка формы'),'WhatsApp message has expected recipient and text');await p.locator('#edit-inquiry').click();assert(await p.locator('#inquiry-form').isVisible(),'Inquiry can be edited');
 for(const route of routes.filter(r=>/^\/courses\/.+\/$/.test(r))){await p.goto('http://127.0.0.1:8765'+route);await p.locator('[data-xsz=next]').click();const hash=await p.evaluate(()=>location.hash);assert(!!hash,'Next chapter '+route);await p.locator('[data-xsz=bookmark]').click();const saved=await p.evaluate(()=>localStorage.getItem('777xsz:course:'+location.pathname));await p.reload();await p.locator('[data-xsz=resume]').click();assert(await p.evaluate(()=>decodeURIComponent(location.hash.slice(1)))===saved,'Bookmark survives reload '+route);}
