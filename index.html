@@ -9,8 +9,8 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
   <title>iBot · AR App Universal</title>
   <link rel="icon" type="image/svg+xml" href="/assets/ibot-mark.svg">
-  <link rel="stylesheet" href="/assets/ibot-app.css?v=2">
-  <script src="/assets/ibot-app.js?v=2" defer></script>
+  <link rel="stylesheet" href="/assets/ibot-app.css?v=3">
+  <script src="/assets/ibot-app.js?v=3" defer></script>
 </head>
 <body>
   <div class="app" id="app">
@@ -68,13 +68,13 @@
             <div class="welcome-orb" aria-hidden="true"><span class="orb-core"></span><span class="orb-orbit one"></span><span class="orb-orbit two"></span></div>
             <p class="eyebrow">iBot</p>
             <h1>Чем могу помочь?</h1>
-            <p class="welcome-subtitle">Задавайте вопросы, обсуждайте идеи и решайте задачи в одном чате.</p>
+            <p class="welcome-subtitle">Общайтесь, задавайте вопросы и получайте ответы в одном чате.</p>
           </div>
-          <div class="suggestions" aria-label="Примеры запросов">
-            <button type="button" class="suggestion" data-suggest="Помоги продумать стратегию развития моего бизнеса."><span class="suggestion-icon gold"><svg viewBox="0 0 24 24"><path d="M3 20V9M10 20V4M17 20v-7M2 20h20"/></svg></span><span>Развить бизнес<small>Планы, решения и процессы</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
-            <button type="button" class="suggestion" data-suggest="Помоги придумать сценарий видео и план монтажа."><span class="suggestion-icon rose"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3Z"/></svg></span><span>Создать видео<small>Сценарий, монтаж и идеи</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
-            <button type="button" class="suggestion" data-suggest="Помоги разработать приложение. Начни с вопросов о задаче и архитектуре."><span class="suggestion-icon blue"><svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-3 16"/></svg></span><span>Написать код<small>От идеи до приложения</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
-            <button type="button" class="suggestion" data-suggest="Помоги написать понятный, живой текст для моей задачи."><span class="suggestion-icon green"><svg viewBox="0 0 24 24"><path d="m14 5 5 5M5 19l4.5-1 9-9a2.1 2.1 0 0 0-3-3l-9 9L5 19Z"/></svg></span><span>Подготовить текст<small>Письма, статьи и документы</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
+          <div class="suggestions" aria-label="Примеры вопросов">
+            <button type="button" class="suggestion" data-suggest="Объясни сложную тему простыми словами."><span class="suggestion-icon gold"><svg viewBox="0 0 24 24"><path d="M9 18h6m-5 3h4M9 14c-2-1.5-3-3-3-5a6 6 0 1 1 12 0c0 2-1 3.5-3 5-.8.6-1 1.2-1 2h-4c0-.8-.3-1.4-1-2Z"/></svg></span><span>Объяснить тему<small>Просто и понятно</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
+            <button type="button" class="suggestion" data-suggest="Помоги написать текст."><span class="suggestion-icon rose"><svg viewBox="0 0 24 24"><path d="M8 3h8l4 4v14H4V3h4m8 0v5h4M8 12h8M8 16h8"/></svg></span><span>Написать текст<small>Письмо, статья или пост</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
+            <button type="button" class="suggestion" data-suggest="Помоги разобраться в вопросе. Задай уточняющие вопросы и предложи варианты."><span class="suggestion-icon blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 4.5 1.5c-1.5 1.3-2 1.8-2 3M12 17h.01"/></svg></span><span>Разобрать вопрос<small>Идеи и советы</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
+            <button type="button" class="suggestion" data-suggest="Переведи мой текст и сохрани его смысл."><span class="suggestion-icon green"><svg viewBox="0 0 24 24"><path d="M3 6h13M10 3v3M6 10c2 3 4 5 7 7M13 9c-2 4-5 7-9 9M14 21l4-11 4 11M15.5 17h5"/></svg></span><span>Перевести текст<small>На нужный язык</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
           </div>
         </div>
         <div class="messages" id="messages" role="log" aria-live="polite" aria-relevant="additions text" hidden></div>
@@ -87,14 +87,9 @@
         </div>
         <form class="composer" id="composer">
           <label class="sr-only" for="messageInput">Сообщение для iBot</label>
-          <textarea id="messageInput" rows="1" placeholder="Напишите, что нужно сделать..." maxlength="12000" aria-label="Сообщение для iBot"></textarea>
+          <textarea id="messageInput" rows="1" placeholder="Спросите iBot о чём угодно..." maxlength="12000" aria-label="Сообщение для iBot"></textarea>
           <div class="composer-bottom">
-            <div class="composer-tools">
-              <button type="button" class="tool-button" id="attachButton" title="Прикрепление файлов пока недоступно" aria-label="Прикрепить файл"><svg viewBox="0 0 24 24"><path d="m20 11-8.7 8.7a5 5 0 0 1-7.1-7.1l10-10a3.5 3.5 0 0 1 5 5l-10 10a2 2 0 0 1-2.8-2.8l8.8-8.8"/></svg><span>Добавить</span></button>
-              <span class="tool-separator"></span>
-              <button type="button" class="tool-button" id="voiceButton" title="Голосовое общение пока недоступно" aria-label="Голосовое общение"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"/></svg><span>Голос</span></button>
-              <span class="composer-hint">Enter для отправки</span>
-            </div>
+            <div class="composer-tools"><span class="composer-hint">Enter для отправки</span></div>
             <button type="submit" class="send-button" id="sendButton" aria-label="Отправить сообщение" disabled><svg id="sendIcon" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
           </div>
         </form>
