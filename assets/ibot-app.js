@@ -13,7 +13,7 @@
     notice: $('gatewayNotice'), noticeText: $('gatewayNoticeText'), retry: $('retryConnection'),
     connection: $('connection'), connectionLabel: $('connectionLabel'),
     accountButton: $('accountButton'), accountStatus: $('accountStatus'),
-    help: $('helpButton'), attach: $('attachButton'), voice: $('voiceButton'),
+    help: $('helpButton'),
     dialog: $('statusDialog'), dialogCopy: $('dialogCopy')
   };
   const state = {
@@ -277,8 +277,6 @@
   els.help.addEventListener('click', () => showStatus());
   els.accountButton.addEventListener('click', () => showStatus());
   els.retry.addEventListener('click', health);
-  els.attach.addEventListener('click', () => showStatus('Прикрепление файлов пока недоступно. Никакие файлы не отправляются.'));
-  els.voice.addEventListener('click', () => showStatus('Голосовое общение пока недоступно. Микрофон не включается.'));
   document.querySelectorAll('[data-suggest]').forEach(btn => {
     btn.addEventListener('click', () => {
       els.input.value = btn.getAttribute('data-suggest') || '';
