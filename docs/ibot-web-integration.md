@@ -61,3 +61,21 @@ Never allow a website client to send shell commands, request arbitrary local fil
 7. Merge only when real calls to PIXEL and client isolation are tested.
 
 Status today: staged UI and Plesk-based integration design, NOT a published or connected AI application. No hosting admin login or PIXEL runtime access has been granted in this session.
+## Existing HostER relay implementation (confirmed from user-provided Plesk index.php on 2026-11-23)
+
+User supplied the current PHP source of relay.777xsz.shop. It ALREADY has /tunnel_pull (PC HMAC-signed long polling), /tunnel_push (PC signed response delivery), and a catch-all proxy for browser requests. It also handles social webhooks, file downloads and temporary media uploads. The broker uses a private config outside webroot and temporary filesystem queues. DO NOT replace or overwrite this existing index.php or its private config; other business integrations depend on it. The actual runtime status and PC worker connectivity have NOT yet been verified.
+
+Existing routes in that source:
+- GET /tunnel_pull: signed polling from PC; checks live heartbeat.
+- POST /tunnel_push: signed response pushed from PC.
+- ALL other paths: passed to PC through queue with a 120-second maximum waiting time, unless a special business route handles them first.
+
+Risks requiring action before a public launch:
+1. The catch-all handler itself does not authorize public browser requests. Authorization MUST be checked at the relay and at the local PIXEL app; anonymous visitors cannot acquire owner capabilities by sending paths or headers. Keep the owner's phone interface separate from the public client-facing chat API.
+2. Frontend served at https://777xsz.shop and relay API served at https://relay.777xsz.shop are different ORIGINS even though they share the same base domain. The current frontend calls same-origin /api/health and /api/chat, which will not reach the relay on GitHub Pages. Implement a dedicated, authenticated public-client API at the relay and a narrowly-scoped CORS policy allowing only https://777xsz.shop; allow credentials only with an appropriate session-cookie and CSRF/Origin strategy, handle OPTIONS requests, and never allow wildcard origins with credentials. Alternative: use a tested same-origin reverse proxy, if available on the existing hosting, with no paid services.
+3. A 120-second synchronous wait ties up PHP workers. For concurrent users use an asynchronous queue, 202 job IDs, status polling and per-user quotas. Keep existing signed phone routes operational.
+4. The provided PHP router forwards arbitrary paths to the PC. Do not expose the local administrator UI or raw tool endpoints to anonymous website users. Explicit allowlist required for client-facing paths.
+5. Verify current .htaccess rewrite rules, Plesk PHP settings, HTTPS, presence of private config (without revealing secrets), and the outbound PIXEL polling process before changing the published frontend.
+6. The old default index.html may take precedence over index.php unless .htaccess specifies routing. Do not delete it until verified.
+
+The user wants the main domain hosted by free GitHub Pages with only iBot; the existing HostER subscription is used ONLY for relay. No Cloudflare and no new paid hosting. Source supplied does not prove the remote local iBot API is compatible with /api/chat, nor that it is currently reachable.
