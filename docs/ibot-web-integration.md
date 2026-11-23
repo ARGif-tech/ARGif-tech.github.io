@@ -7,9 +7,9 @@ This branch contains a responsive interface, not a connected iBot service. The m
 Only the branch root index.html is replaced. New styles and chat client are at assets/ibot-app.css and assets/ibot-app.js. Old marketing pages and CNAME are retained. The new page does not load the old analytics script, Yandex Webvisor, the legacy chat or external AI endpoints.
 
 ## Target architecture
-Browser => HTTPS 777xsz.shop => same-origin identity and authorization gateway => authenticated outbound relay => iBot core on PIXEL => results returned to authorized session.
+Browser => HTTPS 777xsz.shop (hosted on existing HostER/Plesk) => authenticated same-origin PHP gateway => hosting database/job queue => outbound HTTPS polling agent on PIXEL => local iBot runtime. Completed jobs return through the same authenticated Plesk gateway. The existing relay.777xsz.shop subdomain may be used for a private worker API after ownership, TLS and permissions are verified.
 
-GitHub Pages is a static host. It cannot execute /api/health or /api/chat. Route /api/* through an authenticated gateway, such as a properly configured Cloudflare Worker and secure outbound Tunnel, only after confirming domain DNS and access. Do not expose model, database, local Windows, tools or internal network ports to the internet. The gateway must enforce role and tenant isolation, rate limits, quotas, audit and trusted-origin validation.
+Current main website uses GitHub Pages (static only). The user requires exclusively iBot on the domain, hosted on their existing HostER/Plesk, with NO Cloudflare, new paid relay or SSH dependency. On cutover, deploy the frontend plus same-origin server-side PHP API on Plesk, then change root DNS at the registrar only after staging passes. Plesk supports remote Git deployment on eligible plans; test the actual subscription first. Validate PHP version, database storage, SSL, access to scheduled tasks, outbound HTTPS and rate limits. Historical configuration mentions relay.777xsz.shop and no SSH; neither actual availability nor current PHP/database entitlements are confirmed. If no long-running server or SSH is available, PIXEL MUST initiate outbound authenticated HTTPS polling to the broker; do not attempt inbound connections to the home PC. PHP may handle short requests and job queue persistence, but should not run a persistent model process. The gateway must enforce per-tenant permissions, rate limits, CSRF, authentication, job ownership, audit, nonce-based worker authentication and replay protection. Do not expose model runtime, databases, Windows, secrets or privileged tools to the internet.
 
 ## API contract expected by the browser
 
@@ -33,8 +33,10 @@ POST /api/chat, same origin, credentials in HttpOnly Secure SameSite session coo
  "messages": [{"role": "user", "text": "untrusted client context"}]
 }
 
-Response:
+Response (when reply is already available):
 {"reply": "reply returned from actual iBot runtime"}
+
+For longer operations with limited PHP request duration, return HTTP 202 with an opaque job identifier and create an authenticated GET /api/jobs/{id} endpoint for polling progress and final output. The current frontend implements only the immediate reply contract: adapt it to async jobs AFTER the real Plesk gateway has been verified. Do not return placeholder model text as an actual reply.
 
 The server must derive identity, tenant and permissions ONLY from a validated session, check CSRF and Origin, ignore client-provided roles, cap payload sizes, validate conversation ownership and tool permissions, and rate limit actions. The supplied messages are untrusted hints, not authoritative history. Reject missing authorization with 401/403; do not substitute made-up replies if the runtime is offline. Side-effecting tools need idempotency, owner approvals and audit logs.
 
@@ -50,7 +52,7 @@ Current browser chats exist ONLY in in-memory JavaScript, not in localStorage, s
 Never allow a website client to send shell commands, request arbitrary local files, change operating-system services or access another tenant.
 
 ## Before production
-1. Confirm DNS, hosting and ability to route same-origin /api traffic. Verify TLS and authenticated relay to PIXEL.
+1. Confirm domain/DNS management (historically PS.kz) and real HostER/Plesk subscription capabilities, PHP, database, storage, TLS and available worker relaying. No Cloudflare. Verify the outbound polling agent from PIXEL to the Plesk broker. Do not alter the current live GitHub Pages site until this works.
 2. Keep the current live main commit as a rollback point and do not run build_site.py (old AR Works generator).
 3. Test 320/375/390/430 px mobile and desktop, keyboard, offline, login expiration, invalid JSON, timeouts, rate limits, CSRF, concurrent work and prompt injection.
 4. Confirm the new page has no Webvisor or other recording of private prompts, files, tokens or conversations.
@@ -58,4 +60,4 @@ Never allow a website client to send shell commands, request arbitrary local fil
 6. Update sitemap, robots and redirects on final migration, without breaking CNAME or DNS records. The staged page has noindex until release readiness.
 7. Merge only when real calls to PIXEL and client isolation are tested.
 
-Status today: staged UI and integration contract, NOT a published or connected AI application.
+Status today: staged UI and Plesk-based integration design, NOT a published or connected AI application. No hosting admin login or PIXEL runtime access has been granted in this session.
