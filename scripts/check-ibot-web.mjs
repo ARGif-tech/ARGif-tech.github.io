@@ -32,6 +32,13 @@ for (const forbidden of [
 }
 assert.match(html, /Недавние беседы/, 'chat history visible');
 assert.match(html, /Чат с iBot/, 'public chat is central');
+for (const hidden of ['Автопубликация', 'Автопостинг', 'Создать видео', 'Сделай ролик', 'Развить бизнес', 'Написать код', 'CRM', 'Мастерская', 'Задачи', 'Модули', 'Аналитика', 'Прикрепить файл', 'Голосовое общение']) {
+  assert.ok(!html.includes(hidden), 'owner-only or inactive feature surfaced: ' + hidden);
+}
+assert.ok(!html.includes('id="attachButton"') && !html.includes('id="voiceButton"'), 'no inactive upload or voice tools');
+assert.ok(!js.includes('els.attach.addEventListener') && !js.includes('els.voice.addEventListener'), 'no listeners for removed controls');
+assert.match(html, /Объяснить тему/);
+assert.match(html, /Перевести текст/);
 assert.match(css, /@media\(max-width:760px\)/, 'mobile layout');
 assert.match(css, /prefers-reduced-motion/, 'reduced motion');
 console.log('iBot web static smoke checks passed. These checks do NOT prove browser behavior or live connectivity.');
