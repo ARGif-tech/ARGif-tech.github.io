@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f8f8f6">
-  <meta name="description" content="iBot от AR App Universal. Один чат для идей, работы, кода, бизнеса и создания контента.">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="iBot. Личный интеллектуальный помощник для общения, идей и повседневных задач.">
   <meta name="robots" content="noindex,nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
   <title>iBot · AR App Universal</title>
   <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="stylesheet" href="/assets/ibot-app.css?v=1">
-  <script src="/assets/ibot-app.js?v=1" defer></script>
+  <link rel="stylesheet" href="/assets/ibot-app.css?v=2">
+  <script src="/assets/ibot-app.js?v=2" defer></script>
 </head>
 <body>
   <div class="app" id="app">
@@ -18,36 +18,28 @@
       <div class="sidebar-top">
         <a class="brand" href="/" aria-label="iBot, главная">
           <span class="brand-mark" aria-hidden="true"><span class="mark-core"></span><span class="mark-ring"></span></span>
-          <span class="brand-name">iBot <span>AI</span></span>
+          <span class="brand-name">iBot</span>
         </a>
         <button type="button" class="icon-button sidebar-dismiss" id="closeSidebar" aria-label="Закрыть меню"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
       </div>
       <button type="button" class="new-chat" id="newChat">
         <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-        <span>Новый чат</span>
-        <kbd>⌘ K</kbd>
+        <span>Новая беседа</span>
+        <kbd>Ctrl K</kbd>
       </button>
       <div class="sidebar-section">
-        <div class="section-heading">Пространство</div>
+        <div class="section-heading">Меню</div>
         <button class="nav-link current" type="button" id="navChats" aria-current="page">
           <svg viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l1.9-3.8A7.5 7.5 0 1 1 20 11.5Z"/></svg>
-          Чаты
-        </button>
-        <button class="nav-link" type="button" data-suggest="Помоги организовать мои проекты и задачи.">
-          <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10H3Z"/></svg>
-          Проекты
-        </button>
-        <button class="nav-link" type="button" data-suggest="Помоги разобраться с документом или файлом.">
-          <svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v6h5"/></svg>
-          Файлы
+          Чат
         </button>
       </div>
       <div class="sidebar-section history-section">
-        <div class="section-heading">В этой вкладке <span id="historyCount">0</span></div>
+        <div class="section-heading">Недавние беседы <span id="historyCount">0</span></div>
         <div id="chatHistory" class="chat-history" aria-label="Текущие беседы"></div>
       </div>
       <div class="sidebar-bottom">
-        <div class="sidebar-footnote">AR App Universal<br><span>Интеллектуальная система iBot</span></div>
+        <div class="sidebar-footnote">iBot · AR App Universal</div>
         <button type="button" class="account" id="accountButton" aria-label="Состояние подключения">
           <span class="account-avatar">i</span>
           <span class="account-copy"><b>iBot</b><small id="accountStatus">Ожидание подключения</small></span>
@@ -62,7 +54,7 @@
       <header class="topbar">
         <div class="topbar-left">
           <button type="button" class="icon-button menu-toggle" id="openSidebar" aria-label="Открыть меню"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-          <div class="topbar-product"><b>iBot</b><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg><span>Рабочее пространство</span></div>
+          <div class="topbar-product"><b>Чат с iBot</b><span>Ваш интеллектуальный помощник</span></div>
         </div>
         <div class="topbar-actions">
           <span class="connection" id="connection" role="status"><span class="connection-dot"></span><span id="connectionLabel">Проверка соединения</span></span>
@@ -74,9 +66,9 @@
         <div class="welcome" id="welcome">
           <div class="welcome-head">
             <div class="welcome-orb" aria-hidden="true"><span class="orb-core"></span><span class="orb-orbit one"></span><span class="orb-orbit two"></span></div>
-            <p class="eyebrow">Знакомьтесь, iBot</p>
-            <h1>Есть задача?<br><span>Давайте разберёмся.</span></h1>
-            <p class="welcome-subtitle">Идеи, тексты, разработка, бизнес и контент. Один разговор для всего, что вам нужно сделать.</p>
+            <p class="eyebrow">iBot</p>
+            <h1>Чем могу помочь?</h1>
+            <p class="welcome-subtitle">Задавайте вопросы, обсуждайте идеи и решайте задачи в одном чате.</p>
           </div>
           <div class="suggestions" aria-label="Примеры запросов">
             <button type="button" class="suggestion" data-suggest="Помоги продумать стратегию развития моего бизнеса."><span class="suggestion-icon gold"><svg viewBox="0 0 24 24"><path d="M3 20V9M10 20V4M17 20v-7M2 20h20"/></svg></span><span>Развить бизнес<small>Планы, решения и процессы</small></span><svg class="suggestion-arrow" viewBox="0 0 24 24"><path d="m8 16 8-8M9 8h7v7"/></svg></button>
@@ -91,16 +83,16 @@
 
       <div class="composer-zone">
         <div class="notices">
-          <div id="gatewayNotice" class="gateway-notice" hidden><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Zm0 7v4m0 3h.01"/></svg><span id="gatewayNoticeText">Сервер iBot пока не подключён. Сообщения не отправляются.</span><button id="retryConnection" type="button">Повторить проверку</button></div>
+          <div id="gatewayNotice" class="gateway-notice" hidden><svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Zm0 7v4m0 3h.01"/></svg><span id="gatewayNoticeText">iBot временно недоступен. Сообщения не отправляются.</span><button id="retryConnection" type="button">Повторить проверку</button></div>
         </div>
         <form class="composer" id="composer">
           <label class="sr-only" for="messageInput">Сообщение для iBot</label>
           <textarea id="messageInput" rows="1" placeholder="Напишите, что нужно сделать..." maxlength="12000" aria-label="Сообщение для iBot"></textarea>
           <div class="composer-bottom">
             <div class="composer-tools">
-              <button type="button" class="tool-button" id="attachButton" title="Добавление файлов будет доступно после подключения защищённого сервера" aria-label="Прикрепить файл"><svg viewBox="0 0 24 24"><path d="m20 11-8.7 8.7a5 5 0 0 1-7.1-7.1l10-10a3.5 3.5 0 0 1 5 5l-10 10a2 2 0 0 1-2.8-2.8l8.8-8.8"/></svg><span>Добавить</span></button>
+              <button type="button" class="tool-button" id="attachButton" title="Прикрепление файлов пока недоступно" aria-label="Прикрепить файл"><svg viewBox="0 0 24 24"><path d="m20 11-8.7 8.7a5 5 0 0 1-7.1-7.1l10-10a3.5 3.5 0 0 1 5 5l-10 10a2 2 0 0 1-2.8-2.8l8.8-8.8"/></svg><span>Добавить</span></button>
               <span class="tool-separator"></span>
-              <button type="button" class="tool-button" id="voiceButton" title="Голосовое общение появится после подключения локального сервиса" aria-label="Голосовое общение"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"/></svg><span>Голос</span></button>
+              <button type="button" class="tool-button" id="voiceButton" title="Голосовое общение пока недоступно" aria-label="Голосовое общение"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8"/></svg><span>Голос</span></button>
               <span class="composer-hint">Enter для отправки</span>
             </div>
             <button type="submit" class="send-button" id="sendButton" aria-label="Отправить сообщение" disabled><svg id="sendIcon" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
@@ -113,9 +105,9 @@
   <dialog class="status-dialog" id="statusDialog" aria-labelledby="dialogTitle">
     <form method="dialog">
       <div class="dialog-top"><span class="dialog-icon">i</span><button type="submit" class="icon-button" aria-label="Закрыть окно"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
-      <h2 id="dialogTitle">Подключение iBot</h2>
-      <p id="dialogCopy">Это интерфейс нового iBot. Защищённый сервер, авторизация и подключение локального ядра PIXEL ещё должны быть настроены и проверены.</p>
-      <div class="dialog-tags"><span>Без передачи чатов в аналитику</span><span>Без внешних моделей в браузере</span></div>
+      <h2 id="dialogTitle">iBot</h2>
+      <p id="dialogCopy">Сервис находится в подготовке. Отправка сообщений станет доступна после завершения подключения.</p>
+      <div class="dialog-tags"><span>Приватные беседы</span><span>Без рекламы</span></div>
       <button type="submit" class="dialog-primary">Понятно</button>
     </form>
   </dialog>
