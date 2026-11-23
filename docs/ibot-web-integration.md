@@ -79,3 +79,16 @@ Risks requiring action before a public launch:
 6. The old default index.html may take precedence over index.php unless .htaccess specifies routing. Do not delete it until verified.
 
 The user wants the main domain hosted by free GitHub Pages with only iBot; the existing HostER subscription is used ONLY for relay. No Cloudflare and no new paid hosting. Source supplied does not prove the remote local iBot API is compatible with /api/chat, nor that it is currently reachable.
+
+## Plesk .htaccess routing confirmed by owner
+
+Current rewrite rules were shared by owner on 2026-11-23:
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L,QSA]
+    Options -Indexes
+
+Non-file requests are dispatched to index.php and directory listings are blocked. Existing public files such as index.html remain directly accessible. This is NOT an access-control or CORS policy. Leave the existing Plesk .htaccess unchanged while adding a separate restricted client API. Never assume a matching .htaccess rule alone protects privileged PIXEL routes.
+
+Owner also supplied a screenshot of the local iBot Pro desktop UI, and specifically requested that the PUBLIC site match its dark branding while showing ONLY the chat, new conversations and history. The site must not expose tasks, processes, CRM, media studio, analytics, daily reports, workshop, CPU/RAM/storage, model identifiers or owner-only administration. The feature branch now removes these public navigation elements and tests for inadvertent presence; this cosmetic restriction is insufficient without authorization checks at the relay and local backend.
