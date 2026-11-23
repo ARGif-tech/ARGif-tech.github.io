@@ -73,7 +73,7 @@
       }
       const data = await res.json();
       if (!data || data.service !== 'ibot' || data.ready !== true) {
-        throw new Error('Локальное ядро iBot не готово');
+        throw new Error('iBot не готов');
       }
       state.connected = true;
       state.authenticated = data.authenticated === true;
@@ -84,13 +84,13 @@
         els.notice.hidden = true;
       } else {
         state.authenticated = false;
-        setConnected('Нужен вход', 'offline', 'Нет активной сессии');
-        showNotice('Сервер отвечает, но безопасная авторизация ещё не завершена. Сообщения не отправляются.');
+        setConnected('Недоступен', 'offline', 'Требуется вход');
+        showNotice('Для переписки необходим вход в iBot. Пока сообщения не отправляются.');
       }
     } catch (error) {
       state.connected = false;
-      setConnected('Не подключён', 'offline', 'Сервер недоступен');
-      showNotice('iBot пока не подключён к этому сайту. Сообщения не отправляются, переписки не передаются.');
+      setConnected('Недоступен', 'offline', 'Нет соединения');
+      showNotice('iBot сейчас недоступен. Сообщения не отправляются.');
     } finally {
       clearTimeout(timer);
       state.checking = false;
@@ -204,7 +204,7 @@
     const text = els.input.value.trim();
     if (!text || state.sending) return;
     if (!state.connected || !state.authenticated || !state.csrf || !state.capabilities.has('chat')) {
-      showNotice('Сначала нужно подключить защищённый сервер iBot и войти в аккаунт. Текст сообщения сохранён в поле ввода.');
+      showNotice('Сейчас отправка сообщений недоступна. Ваш текст останется в поле ввода.');
       return;
     }
     let chat = currentChat();
@@ -241,7 +241,7 @@
       if (res.status === 401 || res.status === 403) {
         state.authenticated = false;
         state.csrf = '';
-        setConnected('Нужен вход', 'offline', 'Авторизация истекла');
+        setConnected('Недоступен', 'offline', 'Сессия завершена');
         throw new Error('Сессия завершилась. Для продолжения потребуется повторный вход.');
       }
       if (!res.ok || !(res.headers.get('content-type') || '').includes('application/json')) {
@@ -277,8 +277,8 @@
   els.help.addEventListener('click', () => showStatus());
   els.accountButton.addEventListener('click', () => showStatus());
   els.retry.addEventListener('click', health);
-  els.attach.addEventListener('click', () => showStatus('Загрузка файлов будет включена после авторизации и проверки защищённого API. Пока браузер не передаёт никакие файлы на сервер.'));
-  els.voice.addEventListener('click', () => showStatus('Для голосового общения нужен проверенный локальный сервис распознавания и синтеза речи. Сейчас микрофон не включается.'));
+  els.attach.addEventListener('click', () => showStatus('Прикрепление файлов пока недоступно. Никакие файлы не отправляются.'));
+  els.voice.addEventListener('click', () => showStatus('Голосовое общение пока недоступно. Микрофон не включается.'));
   document.querySelectorAll('[data-suggest]').forEach(btn => {
     btn.addEventListener('click', () => {
       els.input.value = btn.getAttribute('data-suggest') || '';
