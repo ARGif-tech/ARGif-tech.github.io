@@ -190,8 +190,7 @@ select{max-inline-size:100%;min-inline-size:0;inline-size:100%}
 .signature-signal{animation:signature-flow 3s linear infinite}.signature-pulse{animation:signature-pulse 2.4s ease-in-out infinite}
 @keyframes signature-flow{to{stroke-dashoffset:-52}}
 @keyframes signature-pulse{0%,100%{opacity:.35}50%{opacity:1}}
-html.xm-disabled .signature-signal,html.xm-disabled .signature-pulse{animation:none}
-@media(prefers-reduced-motion:reduce){html:not(.xm-user-on) .signature-signal,html:not(.xm-user-on) .signature-pulse{animation:none}}
+
 .solution-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:18px;align-items:stretch}
 .solution-choices{display:grid;gap:8px;min-width:0}
 .solution-choices button{text-align:left;min-height:52px;padding:12px 16px;background:#1b1b1b;border:1px solid #3d3d3d;border-radius:8px;font-weight:650;line-height:1.4;overflow-wrap:anywhere}
@@ -255,8 +254,7 @@ details:not(.studio-mobile) summary::-webkit-details-marker{display:none}
 @keyframes offer-flow{to{stroke-dashoffset:-45}}
 @keyframes offer-pulse{0%,100%{opacity:.4}50%{opacity:1}}
 @keyframes offer-playhead{0%{transform:translateX(0);opacity:.8}94%{transform:translateX(320px);opacity:1}100%{transform:translateX(320px);opacity:0}}
-html.xm-disabled .offer-art *{animation:none!important}
-@media(prefers-reduced-motion:reduce){html:not(.xm-user-on) .offer-art *{animation:none!important}}
+
 @media(max-width:760px){.offer-hero-grid{grid-template-columns:minmax(0,1fr);gap:24px}.offer-intro h1{font-size:clamp(34px,8.8vw,48px)}.offer-art{width:100%;max-width:510px}.offer-art figcaption{padding:10px 12px;font-size:12px}.offer-intro .lead{font-size:16px}}
 
 /* Continuous ambient motion. Text and interactive control positions never loop. */
@@ -288,6 +286,30 @@ html.xm-disabled .offer-art *{animation:none!important}
 @keyframes signature-sweep{0%,12%{transform:translateX(-100%)}65%,100%{transform:translateX(100%)}}
 @keyframes signature-book{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-10px) rotate(-4deg)}}
 @keyframes signature-book-pages{0%,100%{transform:translate(10px,3px) rotate(-8deg)}50%{transform:translate(10px,-7px) rotate(-4deg)}}
-html.xm-disabled :is(.signature-cube,.signature-orbits,.signature-chip,.signature-server-bars,.signature-chart,.signature-icons,.signature-stage::after,.studio-book-cover,.studio-book-pages,.studio-location i,.studio-service-art::after,.offer-art::after){animation:none!important}
-html.xm-disabled .signature-orbit-dot{display:none}
-@media(prefers-reduced-motion:reduce){:is(.signature-cube,.signature-orbits,.signature-chip,.signature-server-bars,.signature-chart,.signature-icons,.signature-stage::after,.studio-book-cover,.studio-book-pages,.studio-location i,.studio-service-art::after,.offer-art::after){animation:none!important}.signature-orbit-dot{display:none}}
+
+/* Motion is visible without JS or hover. Reduced-motion mode uses stationary,
+   slow lighting changes instead of spatial motion or moving GIF frames. */
+.signature-stage,.offer-art,.studio-service-art,.xm-mini-scene{isolation:isolate}
+.signature-stage::before,.offer-art::before,.studio-service-art::before,.xm-mini-scene::before{
+ content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;z-index:1;
+ background:radial-gradient(ellipse at 48% 38%,rgba(199,255,47,.19),transparent 64%);
+ opacity:.12;animation:xsz-light-breathe 4s ease-in-out infinite;
+}
+.xm-mini-scene{position:relative}
+@keyframes xsz-light-breathe{0%,100%{opacity:.12}50%{opacity:.82}}
+@keyframes xsz-indicator-breathe{0%,100%{opacity:.48}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){
+ .signature-cube,.signature-orbits,.signature-server-bars,.signature-chart,
+ .signature-stage::after,.studio-book-cover,.studio-book-pages,
+ .studio-service-art::after,.offer-art::after,.oa-playhead{animation:none!important;transform:none}
+ .signature-orbit-dot{display:none}
+ .signature-chip,.signature-pulse,.signature-icons,.signature-signal,.oa-flow,.oa-pulse,.studio-location i{
+ animation:xsz-indicator-breathe 4s ease-in-out infinite!important;
+ }
+ .signature-chart{stroke-dashoffset:0}
+ .signature-stage::before,.offer-art::before,.studio-service-art::before,.xm-mini-scene::before{
+ animation:xsz-light-breathe 4s ease-in-out infinite!important;
+ }
+ .studio-book-cover{transform:rotate(-8deg)}
+ .studio-book-pages{transform:translate(10px,3px) rotate(-8deg)}
+}
