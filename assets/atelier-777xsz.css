@@ -32,3 +32,6 @@ details{border-bottom:1px solid #444;padding:19px 0}summary{font-weight:700;font
 .service-cases{margin-top:24px;color:#c3c3c3;font-size:13px}.service-cases strong{display:block;margin-bottom:10px;font-size:14px;color:#f3f3f3}.service-cases>div{display:flex;gap:8px;flex-wrap:wrap}.service-cases span{display:inline-block;padding:7px 12px;border:1px solid #464646;background:#191919;border-radius:3px;max-width:100%}.service-scope .tile p{margin-bottom:0}.service-scope .tile{min-height:150px}
 
 .xsz-motion-art{transform-origin:center center;will-change:transform}.benefit .object-art svg{overflow:visible}.x-engine .x-sculpture{overflow:hidden}
+
+/* Commercial v7 consistency */
+.service-hero{background:#101010!important}.service-hero .halo,.service-hero .visual-path{display:none!important}.service-hero h1{font-size:clamp(45px,7vw,98px);letter-spacing:-.075em}.site-nav .btn,.service-hero .btn,.price-menu,.xprice-fields,.xprice-summary,.service-scope .tile{border-radius:0!important}.xprice [hidden]{display:none!important}
