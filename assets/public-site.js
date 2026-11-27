@@ -22,3 +22,47 @@ addEventListener('scroll',requestProgress,{passive:true});addEventListener('resi
 if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>{for(const e of entries){if(!e.isIntersecting)continue;io.unobserve(e.target);if(off||document.hidden||typeof e.target.animate!=='function')continue;const a=e.target.animate([{opacity:.74,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:420,easing:'ease-out'});active.add(a);a.onfinish=a.oncancel=()=>active.delete(a)}},{threshold:.1});document.querySelectorAll('.studio-section-head,.studio-service,.studio-project,.studio-process-grid article,.seo-grid>article,.service-scope .tile,.seo-author,.studio-usecases article,.card').forEach(e=>io.observe(e));}
 document.addEventListener('visibilitychange',()=>{if(document.hidden){for(const a of active)a.cancel();active.clear()}else requestProgress()});
 })();
+// v25: explicit frame updates for visible artwork and decorative rails.
+// Keep text, layout, prices, form inputs and hit targets stationary.
+(()=>{
+ const root=document.documentElement,media=matchMedia('(prefers-reduced-motion: reduce)');
+ const rails=[...document.querySelectorAll('.studio-service,.seo-grid>article,.service-scope .tile,.studio-process-grid article,.studio-usecases article,.card,.solution-result,.xprice-summary,.seo-author,.studio-mini,.price-menu,.studio-demo,.studio-learning,.studio-experience,.xm-detail-scene,.xm-mini-scene')].filter(e=>!e.closest('.xprice-fields,form,details'));
+ const visual=[...document.querySelectorAll('.signature-stage,.offer-art,.studio-service-art,.xm-detail-scene,.xm-mini-scene,.studio-book,.glyph')];
+ const all=[...new Set([...rails,...visual])];
+ const visible=new Set(), observers=[];
+ const railMap=new Map();
+ for(const e of rails){
+  e.classList.add('xsz-live-frame');
+  const r=document.createElement('span');r.className='xsz-live-rail';r.setAttribute('aria-hidden','true');
+  const b=document.createElement('i');r.append(b);e.append(r);railMap.set(e,b);
+ }
+ for(const e of visual){e.classList.add('xsz-live-visual')}
+ if('IntersectionObserver'in window){const ob=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting)visible.add(e.target);else visible.delete(e.target)}},{rootMargin:'90px'});all.forEach(e=>ob.observe(e));observers.push(ob)}else all.forEach(e=>visible.add(e));
+ const nodes=[...document.querySelectorAll('.signature-cube,.signature-orbits,.signature-chip,.signature-chart,.signature-server-bars,.signature-pulse,.signature-signal,.signature-icons,.oa-flow,.oa-pulse,.oa-playhead')];
+ const nodeParent=new Map(nodes.map(e=>[e,e.closest('.signature-stage,.offer-art')]));
+ let timer=null,frames=0,start=performance.now();
+ const f=n=>Number(n).toFixed(3);
+ function tick(){
+  if(document.hidden)return;
+  const t=(performance.now()-start)/1000,gentle=media.matches;
+  for(const e of visible){
+   const index=all.indexOf(e),p=t*1.45+index*.79,w=(1-Math.cos(p))*.5;
+   e.style.setProperty('--xsz-motion-light',f(.22+.67*w));
+   const rail=railMap.get(e);if(rail){rail.style.opacity=f(.35+.65*w);rail.style.transform=gentle?'none':'translateX('+f((t*22+index*37)%220-80)+'%)';}
+  }
+  for(const e of nodes){
+   if(!visible.has(nodeParent.get(e)))continue;
+   const w=(1-Math.cos(t*1.8))*.5;
+   e.classList.add('xsz-frame-driven');
+   if(e.classList.contains('signature-cube'))e.style.transform=gentle?'none':'translateY('+f(-13*w)+'px)';
+   else if(e.classList.contains('signature-orbits'))e.style.transform=gentle?'none':'rotate('+f(t*13%360)+'deg)';
+   else if(e.classList.contains('signature-chart'))e.style.strokeDashoffset=gentle?'0':f(1-w);
+   else if(e.classList.contains('signature-server-bars')||e.classList.contains('signature-signal')||e.classList.contains('oa-flow')){e.style.strokeDashoffset=gentle?'0':f(-t*26%100);e.style.opacity=f(.55+.45*w);}
+   else if(e.classList.contains('oa-playhead'))e.style.transform=gentle?'none':'translateX('+f(t*70%300)+'px)';
+   else e.style.opacity=f(.53+.47*w);
+  }
+  root.dataset.artFrames=String(++frames);
+ }
+ function sync(){if(document.hidden){if(timer!==null)clearInterval(timer);timer=null;}else if(timer===null){tick();timer=setInterval(tick,40);}}
+ root.classList.add('xsz-live-motion');document.addEventListener('visibilitychange',sync);window.addEventListener('pageshow',sync);sync();
+})();

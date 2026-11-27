@@ -321,3 +321,17 @@ details:not(.studio-mobile) summary::-webkit-details-marker{display:none}
 .xm-detail-scene::after,.solution-result::after,.xprice-summary::after,.studio-process-grid article::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(ellipse at 85% 10%,rgba(199,255,47,.15),transparent 65%);animation:xsz-light-breathe 4s ease-in-out infinite;z-index:-1}
 @keyframes xsz-glyph-breathe{0%,100%{opacity:.72;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
 @media(prefers-reduced-motion:reduce){.glyph svg{animation:xsz-indicator-breathe 4s ease-in-out infinite}}
+
+/* v25: continuous motion driven by elapsed time, independent of CSS playback. */
+.xsz-live-frame{position:relative;isolation:isolate}
+.xsz-live-rail{position:absolute;display:block;left:10px;right:10px;top:0;height:2px;border-radius:2px;overflow:hidden;pointer-events:none;z-index:2}
+.xsz-live-rail i{display:block;width:50%;height:2px;background:linear-gradient(90deg,transparent,#c7ff2f,transparent);opacity:.8;transform:translateX(30%);animation:xsz-rail-fallback 4s linear infinite}
+.xsz-live-motion .xsz-live-rail i{animation:none}
+.xsz-live-visual{--xsz-motion-light:.65}
+.xsz-live-visual::before{opacity:var(--xsz-motion-light,.65);animation:none!important}
+.xsz-live-motion .xsz-frame-driven{animation:none!important}
+
+.xsz-live-visual.glyph{box-shadow:inset 0 0 18px rgba(199,255,47,.09)}
+.xsz-live-frame:hover .xsz-live-rail{height:2px}
+@keyframes xsz-rail-fallback{from{transform:translateX(-80%)}to{transform:translateX(160%)}}
+@media(prefers-reduced-motion:reduce){.xsz-live-rail i{transform:none;animation:xsz-indicator-breathe 4s ease-in-out infinite}}

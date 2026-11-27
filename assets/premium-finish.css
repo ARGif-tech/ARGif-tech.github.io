@@ -148,3 +148,12 @@ body{background:#090909!important}
 .xsz-reader-page .toc a:hover,.xsz-library .chapter-links a:hover{color:#c7ff2f}
 .xsz-luxe-book,.xsz-cinema-book{filter:drop-shadow(0 0 18px #69696944)}
 }
+
+/* v25: keep reading surfaces stationary, animate only decoration. */
+@media screen{
+.xsz-reader-page .hero,.xsz-library .hero{position:relative;isolation:isolate}
+.xsz-reader-page .hero::after,.xsz-library .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;pointer-events:none;background:linear-gradient(90deg,transparent,#c7ff2f,transparent);opacity:.65;animation:xsz-reader-signal 4s ease-in-out infinite!important}
+.xsz-reader-page .hero .hero-link,.xsz-library .hero .pill{animation:xsz-reader-edge 4s ease-in-out infinite!important}
+@keyframes xsz-reader-signal{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes xsz-reader-edge{0%,100%{box-shadow:0 0 0 0 #c7ff2f00}50%{box-shadow:0 0 13px 1px #c7ff2f38}}
+}
