@@ -313,3 +313,11 @@ details:not(.studio-mobile) summary::-webkit-details-marker{display:none}
  .studio-book-cover{transform:rotate(-8deg)}
  .studio-book-pages{transform:translate(10px,3px) rotate(-8deg)}
 }
+
+/* v24: visible ambient motion across shared page templates, no hover required. */
+.glyph svg{animation:xsz-glyph-breathe 3.8s ease-in-out infinite;transform-origin:center}
+.card:nth-child(3n+2) .glyph svg{animation-delay:-1.2s}.card:nth-child(3n) .glyph svg{animation-delay:-2.4s}
+.xm-detail-scene,.solution-result,.xprice-summary,.studio-process-grid article{position:relative;isolation:isolate}
+.xm-detail-scene::after,.solution-result::after,.xprice-summary::after,.studio-process-grid article::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(ellipse at 85% 10%,rgba(199,255,47,.15),transparent 65%);animation:xsz-light-breathe 4s ease-in-out infinite;z-index:-1}
+@keyframes xsz-glyph-breathe{0%,100%{opacity:.72;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+@media(prefers-reduced-motion:reduce){.glyph svg{animation:xsz-indicator-breathe 4s ease-in-out infinite}}
