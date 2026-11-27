@@ -60,3 +60,18 @@ for path in commercial:
  assert page.meta.get('og:image')==site+'/assets/social-777xsz.png',path+' missing social image'
  assert 'noindex' not in page.meta.get('robots',''),path
 print('Commercial crawl graph passed:',len(commercial),'pages')
+
+# Keep commercial expansion discoverable and separately useful.
+expanded=json.loads((root/'docs/expanded-services-v24.json').read_text())
+for item in expanded:
+ path='services/'+item['slug']+'/index.html'
+ h=(root/path).read_text();url=site+'/services/'+item['slug']+'/'
+ assert url in sitemap and url in ll,(path,'discovery')
+ assert 'Польза для бизнеса' in h and 'Что входит в работу' in h and 'Что вы получите' in h,path
+ assert h.count('<details>')>=3,path
+ assert 'Индивидуальная смета' in h,path
+ assert 'data-offer-art="'+item['slug']+'"' in h,path
+ for target in item['related']:
+  assert '/services/'+target+'/' in h,(path,target)
+assert len({x['slug'] for x in expanded})==len(expanded)
+print('Expanded commercial pages:',len(expanded))
