@@ -4,13 +4,13 @@ body{background:#0c0f14} .eyebrow{display:none}.hero{background:radial-gradient(
 /* Signal identity for reading pages; keep lesson paper and body text unchanged. */
 @media screen {
 body{background:#07090d!important}
-.xsz-modern .site-header,.xsz-reader-page header,.xsz-library .nav,body>header{background:#080e19!important;border-color:#2b4770!important}
-.xsz-modern .detail-hero,.xsz-modern .page-hero,.xsz-reader-page .hero,.xsz-library .hero,body .hero{background:radial-gradient(ellipse at 82% 20%,#183c83,#101e37 45%,#07090d 82%)!important}
-.xsz-modern .service-card,.xsz-modern .detail-block,.xsz-reader-page .course-card,.xsz-library .card,.xsz-reader-page .toc,.course-card,.cards>.card{background:linear-gradient(145deg,#172741,#10151f)!important;border-color:#395784!important}
+.xsz-modern .site-header,.xsz-reader-page header,.xsz-library .nav,body>header{background:#0c0e11!important;border-color:#424447!important}
+.xsz-modern .detail-hero,.xsz-modern .page-hero,.xsz-reader-page .hero,.xsz-library .hero,body .hero{background:radial-gradient(ellipse at 82% 20%,#37393c,#1b1d20 45%,#07090d 82%)!important}
+.xsz-modern .service-card,.xsz-modern .detail-block,.xsz-reader-page .course-card,.xsz-library .card,.xsz-reader-page .toc,.course-card,.cards>.card{background:linear-gradient(145deg,#232528,#131518)!important;border-color:#525457!important}
 .xsz-modern .button--primary,.xsz-modern .header-contact,.xsz-reader-page .hero-link,.filterline a.current{background:#c7ff2f!important;color:#101608!important;border-color:#c7ff2f!important}
 .xsz-reader-page .progress,.progress>i,.progress>span{background:#c7ff2f}
 .xsz-modern .brand-name,.xsz-reader-page .logo,.xsz-library .logo{color:#f3f6fa!important}
 .xsz-brand-mark{display:inline-block;width:43px;height:32px;object-fit:contain;vertical-align:middle;margin-right:6px}
 .xsz-reader-page .toc a:hover,.xsz-library .chapter-links a:hover{color:#c7ff2f}
-.xsz-luxe-book,.xsz-cinema-book{filter:drop-shadow(0 0 18px #2f6bff44)}
+.xsz-luxe-book,.xsz-cinema-book{filter:drop-shadow(0 0 18px #67696c44)}
 }
