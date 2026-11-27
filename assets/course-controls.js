@@ -19,3 +19,4 @@ if('IntersectionObserver' in window){const observer=new IntersectionObserver(ent
 window.addEventListener('hashchange',()=>{try{const id=decodeURIComponent(location.hash.slice(1));const i=lessons.findIndex(l=>l.id===id);if(i>=0){current=i;refresh()}}catch(_){}});
 refresh();
 })();
+(()=>{if(document.querySelector('script[src*="always-motion.js"]'))return;const css=document.createElement('link');css.rel='stylesheet';css.href='/assets/always-motion.css?v=5';document.head.append(css);const s=document.createElement('script');s.src='/assets/always-motion.js?v=5';s.defer=true;document.head.append(s)})();
