@@ -8,3 +8,5 @@ const drawer=document.querySelector('.cart-drawer');if(drawer){let opener=null;c
 for(const el of document.querySelectorAll('a,button')){if(el.closest('svg'))continue;const walk=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const nodes=[];while(walk.nextNode())nodes.push(walk.currentNode);for(const node of nodes){if(/[↗↘➚⬈]/u.test(node.textContent))node.textContent=node.textContent.replace(/[↗↘➚⬈]/gu,'').replace(/\s{2,}/g,' ')} }
 if(!document.getElementById('wa777-loader')&&!document.querySelector('script[src*="whatsapp-widget.js"]')){const s=document.createElement('script');s.id='wa777-loader';s.src='/whatsapp-widget.js?v=20261027';s.defer=true;document.head.append(s)}
 })();
+
+(()=>{for(const el of document.querySelectorAll('a[href="/ar-app/"],a[href="/ai-bot/"],a[href="/en/ar-app/"],a[href="/kk/ar-app/"],a[href="/en/ai-bot/"],a[href="/kk/ai-bot/"]')){if(el.closest('header,footer,nav'))el.remove()}for(const el of document.querySelectorAll('.brand-caption'))el.remove();for(const el of document.querySelectorAll('header .logo')){if(el.textContent.trim().toUpperCase().includes('XSZ'))el.textContent='777xsz'}})();
