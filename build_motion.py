@@ -1,3 +1,5 @@
+# Archived generator for the former sanitation website. Never run in this repository.
+raise SystemExit("Archived generator: execution disabled to protect 777xsz public pages.")
 """Enhance the static AR Works pages. Run after build_site.py."""
 from pathlib import Path
 import re
