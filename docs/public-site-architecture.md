@@ -18,3 +18,7 @@
 ## Проверка и публикация
 
 Статические проверки SEO, ссылок, структуры и единого набора ресурсов. Браузерные проверки Chromium и WebKit на 320, 375, 390, 768 и 1440 px; калькуляторы, формы, меню, поиск, анимация и отключение движения. Реальный Safari на iPhone требует отдельной проверки владельцем. Основная ветка не изменяется до успешной проверки кандидата.
+
+## Editorial pass
+
+All 13 commercial service pages reviewed for intent, visible scope, pricing, handover, objections and metadata. Main page uses problem-first guidance, no client portfolio. Browser QA captures the first screen for each route and reports internal overflow. Educational lesson text remains a separate editorial scope.
