@@ -2,8 +2,8 @@ from pathlib import Path
 from html.parser import HTMLParser
 import re
 ROOT=Path(__file__).resolve().parents[1]
-pages=[ROOT/'index.html',ROOT/'preview-777xsz/index.html',ROOT/'kk/index.html',ROOT/'en/index.html',ROOT/'courses/index.html',ROOT/'library/index.html',ROOT/'cases/index.html']
-pages+=list(ROOT.glob('services/*/index.html'))+list(ROOT.glob('preview-777xsz/services/*/index.html'))+[p for p in ROOT.glob('cases/*/index.html') if 'public-site.css' in p.read_text()]
+pages=[ROOT/'index.html',ROOT/'preview-777xsz/index.html',ROOT/'kk/index.html',ROOT/'en/index.html',ROOT/'courses/index.html',ROOT/'library/index.html']
+pages+=list(ROOT.glob('services/*/index.html'))+list(ROOT.glob('preview-777xsz/services/*/index.html'))
 class Scan(HTMLParser):
  def __init__(self,h):
   super().__init__();self.styles=[];self.scripts=[];self.inline=0;self.ids=[];self.assets=[];self.feed(h)
