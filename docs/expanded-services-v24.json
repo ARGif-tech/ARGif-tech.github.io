@@ -7,7 +7,9 @@
     "related": [
       "software-development",
       "automation"
-    ]
+    ],
+    "minPrice": 9900000,
+    "package": "SaaS с кабинетами, ролями и управлением доступом"
   },
   {
     "slug": "mobile-apps",
@@ -17,7 +19,9 @@
     "related": [
       "software-development",
       "saas-platforms"
-    ]
+    ],
+    "minPrice": 6900000,
+    "package": "Приложение iOS и Android с серверной частью"
   },
   {
     "slug": "desktop-software",
@@ -27,7 +31,9 @@
     "related": [
       "software-development",
       "local-ai"
-    ]
+    ],
+    "minPrice": 2250000,
+    "package": "Настольная программа с локальными данными и установщиком"
   },
   {
     "slug": "mvp-development",
@@ -37,7 +43,9 @@
     "related": [
       "saas-platforms",
       "software-development"
-    ]
+    ],
+    "minPrice": 5900000,
+    "package": "Рабочий MVP с основным сценарием, серверной частью и проверкой"
   },
   {
     "slug": "ecommerce",
@@ -47,7 +55,9 @@
     "related": [
       "web-development",
       "api-integrations"
-    ]
+    ],
+    "minPrice": 4900000,
+    "package": "Индивидуальный магазин с расширенными интеграциями"
   },
   {
     "slug": "api-integrations",
@@ -57,7 +67,9 @@
     "related": [
       "automation",
       "software-development"
-    ]
+    ],
+    "minPrice": 950000,
+    "package": "Интеграция двух систем с журналом и обработкой ошибок"
   },
   {
     "slug": "business-chatbots",
@@ -67,7 +79,9 @@
     "related": [
       "ai-agents",
       "sales-systems"
-    ]
+    ],
+    "minPrice": 1250000,
+    "package": "Бот с CRM, сценариями и передачей оператору"
   },
   {
     "slug": "knowledge-base",
@@ -77,7 +91,9 @@
     "related": [
       "local-ai",
       "ai-solutions"
-    ]
+    ],
+    "minPrice": 1950000,
+    "package": "Корпоративная база знаний с поиском, источниками и доступами"
   },
   {
     "slug": "document-automation",
@@ -87,7 +103,9 @@
     "related": [
       "knowledge-base",
       "automation"
-    ]
+    ],
+    "minPrice": 1650000,
+    "package": "Распознавание одного типа документов, проверка и экспорт"
   },
   {
     "slug": "business-analytics",
@@ -97,7 +115,9 @@
     "related": [
       "sales-systems",
       "api-integrations"
-    ]
+    ],
+    "minPrice": 1350000,
+    "package": "Панель показателей с интеграцией источников и сверкой"
   },
   {
     "slug": "software-modernization",
@@ -107,7 +127,9 @@
     "related": [
       "software-development",
       "technical-audit"
-    ]
+    ],
+    "minPrice": 1450000,
+    "package": "Согласованный этап модернизации с регрессионной проверкой"
   },
   {
     "slug": "technical-audit",
@@ -117,6 +139,8 @@
     "related": [
       "software-modernization",
       "seo-geo"
-    ]
+    ],
+    "minPrice": 750000,
+    "package": "Аудит кода, архитектуры и критичных рабочих сценариев"
   }
 ]
