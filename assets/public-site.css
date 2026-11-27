@@ -365,3 +365,13 @@ main>section:nth-child(even){background:#151618}
  .xm-live-signal,.xm-live-track{display:initial}
  .xm-live-visual::after{background:radial-gradient(ellipse at 55% 35%,#e1e3e622,transparent 68%)}
 }
+
+/* v27: authored kinetic illustrations on the education and core service cards. */
+.xsz-card-scene{display:block;overflow:hidden;max-width:100%;height:auto;color:#c7ff2f}
+.xsz-scene-wide{width:100%;aspect-ratio:320/168;background:radial-gradient(ellipse at 60% 40%,#34373b,#151618 78%)}
+.xsz-scene-mini{width:min(100%,220px);height:auto;margin:0 0 14px;aspect-ratio:240/84}
+#ai-education .tile{padding-top:20px}
+.xsz-card-scene [data-card-motion]{transform-box:fill-box}
+.xsz-card-scene .xsz-card-particle{pointer-events:none}
+.studio-service-art:has(.xsz-card-scene)::before,.studio-service-art:has(.xsz-card-scene)::after,.xm-mini-scene:has(.xsz-card-scene)::before,.xm-mini-scene:has(.xsz-card-scene)::after{display:none}
+@media(max-width:760px){.xsz-scene-mini{width:min(100%,190px);margin-bottom:12px}}
