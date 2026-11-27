@@ -23,7 +23,7 @@ vec3 env(vec3 r){
   c+=vec3(.82,.84,.78)*pow(max(dot(r,normalize(vec3(-.7,.8,.45))),0.),16.);
   c+=vec3(.53,.54,.48)*pow(max(dot(r,normalize(vec3(.65,-.28,.75))),0.),36.);
   c+=vec3(.58,1.,.045)*pow(max(dot(r,normalize(vec3(.8,.18,-.55))),0.),24.);
-  float strip=smoothstep(.045,.002,abs(r.y-.27))*smoothstep(-.8,.25,r.z);
+  float strip=(1.-smoothstep(.002,.045,abs(r.y-.27)))*smoothstep(-.8,.25,r.z);
   c+=vec3(.75,.76,.70)*strip;
   return c;
 }

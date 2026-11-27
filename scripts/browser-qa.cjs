@@ -1,3 +1,4 @@
+if(require('node:fs').readFileSync(require('node:path').resolve(__dirname,'../index.html'),'utf8').includes('commercial-v8')){require('./commercial-qa.cjs').run({focus:"all",engines:["chromium"]}).catch(e=>{console.error(e);process.exitCode=1;});}else{
 const {chromium,devices}=require('playwright');
 const fs=require('fs'),path=require('path'),http=require('http');
 const root=path.resolve(__dirname,'..'),out=process.env.QA_OUTPUT||'/tmp/xsz-qa';fs.mkdirSync(out,{recursive:true});
@@ -39,3 +40,5 @@ await p.goto('http://127.0.0.1:8765/en/ai-bot/');await p.locator('[data-add]').f
 await context.close();const nojs=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});const np=await nojs.newPage();await np.route(/^https?:\/\/(?!127\.0\.0\.1)/,r=>r.abort());await np.goto('http://127.0.0.1:8765/courses/instagram-smm/');assert(await np.locator('.lesson').count()>0,'Course text available without JavaScript');await nojs.close();await browser.close();server.close();
 const report={runs,pages:routes.length,widths:[320,375,390,768,1440],failures,checks};fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));process.exitCode=failures.length?1:0;
 })().catch(e=>{console.error(e);server.close();process.exit(1)});
+
+}
