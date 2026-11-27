@@ -235,3 +235,9 @@ details:not(.studio-mobile) summary::before{content:"+";color:var(--accent);flex
 details[open]:not(.studio-mobile) summary::before{content:"−"}
 details:not(.studio-mobile) summary::-webkit-details-marker{display:none}
 @media(max-width:760px){main>section{padding-block:42px}.studio-hero{padding-block:36px}.studio-copy .lead{font-size:17px}.studio-promise{font-size:12px}.studio-service{padding:17px}.studio-service-links a{font-size:14px}.studio-service-links strong{font-size:14px}.studio-section-head{margin-bottom:20px}.signature-system{max-width:520px;width:100%;margin-inline:auto}.service-hero .actions,.seo-hero .actions{max-width:100%}.service-hero .actions .btn,.seo-hero .actions .btn{white-space:normal}.site-nav .menu{overflow-wrap:anywhere}.site-nav .social-contact .btn{flex-shrink:1;min-width:0}.xprice{grid-template-columns:minmax(0,1fr)}.xprice-field{width:100%}.xprice-field select{width:100%}}
+
+/* Native select control: constrain its internal WebKit text without clipping the page. */
+.xprice-field .xprice-select-box{position:relative;display:block;width:100%;max-width:100%;min-width:0;overflow:hidden;contain:paint;border-radius:7px;margin:0}
+.xprice-select-box select{appearance:none;-webkit-appearance:none;display:block;width:100%;max-width:100%;min-width:0;padding-right:34px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;outline-offset:-3px}
+.xprice-select-box::after{content:"";position:absolute;right:15px;top:19px;width:8px;height:8px;transform:rotate(45deg);border:solid var(--accent);border-width:0 2px 2px 0;pointer-events:none}
+.xprice-selected{display:block;font-size:12px;color:var(--muted);line-height:1.5;overflow-wrap:anywhere;margin-top:6px}
