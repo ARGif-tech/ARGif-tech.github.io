@@ -321,3 +321,14 @@ details:not(.studio-mobile) summary::-webkit-details-marker{display:none}
 .xm-detail-scene::after,.solution-result::after,.xprice-summary::after,.studio-process-grid article::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(ellipse at 85% 10%,rgba(199,255,47,.15),transparent 65%);animation:xsz-light-breathe 4s ease-in-out infinite;z-index:-1}
 @keyframes xsz-glyph-breathe{0%,100%{opacity:.72;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
 @media(prefers-reduced-motion:reduce){.glyph svg{animation:xsz-indicator-breathe 4s ease-in-out infinite}}
+
+/* v25 live illustrated motion. */
+html.xm-live .signature-cube,html.xm-live .signature-orbits{animation:none!important;transform-box:view-box;transform-origin:0 0}
+.xm-live-signal{filter:drop-shadow(0 0 4px #c7ff2f88)}
+.signature-stage,.offer-art,.studio-service-art,.xm-mini-scene,.xm-detail-scene,.glyph,.studio-book{position:relative;isolation:isolate}
+.xm-live-visual::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;border-radius:inherit;background:linear-gradient(100deg,transparent 20%,#c7ff2f14 49%,transparent 72%);background-size:230% 100%;background-position:var(--xm-travel,0%) 50%;opacity:var(--xm-light,.35);animation:none}
+.glyph.xm-live-visual::after{background:radial-gradient(ellipse,#c7ff2f35,transparent 70%);opacity:var(--xm-light,.35)}
+.studio-process-grid article::after,.solution-result::after,.xprice-summary::after{z-index:0;pointer-events:none;background:radial-gradient(ellipse at 93% 8%,#c7ff2f12,transparent 50%)}
+.studio-process-grid article>*,.solution-result>*,.xprice-summary>*{position:relative;z-index:1}
+.signature-server-bars{animation-duration:1.8s}.signature-chart{animation-duration:3.1s}.signature-pulse{animation-duration:1.4s}
+@media(prefers-reduced-motion:reduce){.xm-live-signal,.xm-live-track{display:none}.xm-live-visual::after{background:radial-gradient(ellipse at 55% 35%,#c7ff2f16,transparent 68%);opacity:var(--xm-light,.35)}}
