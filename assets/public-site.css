@@ -173,3 +173,31 @@ footer a{min-height:44px;display:inline-flex;align-items:center}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 html.xm-disabled{scroll-behavior:auto}
 @media(hover:hover) and (pointer:fine){html:not(.xm-disabled) .btn,html:not(.xm-disabled) .studio-service,html:not(.xm-disabled) .seo-grid>article{transition:transform .2s ease,border-color .2s ease}html:not(.xm-disabled) .studio-service:hover,html:not(.xm-disabled) .seo-grid>article:hover{transform:translateY(-3px)}}
+
+/* Containment for intrinsic sizing and signature composition. */
+main,main>section,.wrap,.studio-copy,.studio-service-links,.price-menu-row,.xprice-field,.xprice-dynamic,.xprice-fields,.xprice-summary,.service-cases,.service-nav{min-width:0}
+picture.xm-native{display:block;min-width:0;max-width:100%;height:auto}
+.xm-native-gif{max-width:100%;width:100%;height:auto}
+.xm-art,.xm-detail-scene,.xm-mini-scene{min-width:0;max-width:100%;grid-template-columns:minmax(0,1fr)}
+select{max-inline-size:100%;min-inline-size:0;inline-size:100%}
+.xprice-fields,.xprice-summary,.studio-quote{max-width:100%}
+.signature-system{margin:0;min-width:0}
+.signature-stage{position:relative;isolation:isolate;overflow:hidden;contain:paint;aspect-ratio:520/420;background:radial-gradient(ellipse,#30332a,#141414 72%);border:1px solid #3c4135;border-radius:16px}
+.signature-art{display:block;width:100%;height:100%}
+.signature-system figcaption{font-size:12px;color:var(--muted);margin-top:10px;text-align:center}
+.signature-label{position:absolute;font-size:12px;font-weight:700;line-height:1.2;color:#d8dacd;background:#191b18;padding:5px 8px;border:1px solid #565c4a;border-radius:5px}
+.sl-web{left:2%;top:32%}.sl-crm{right:2%;top:32%}.sl-sales{left:2%;bottom:9%}.sl-ai{right:2%;bottom:9%}
+.signature-signal{animation:signature-flow 3s linear infinite}.signature-pulse{animation:signature-pulse 2.4s ease-in-out infinite}
+@keyframes signature-flow{to{stroke-dashoffset:-52}}
+@keyframes signature-pulse{0%,100%{opacity:.35}50%{opacity:1}}
+html.xm-disabled .signature-signal,html.xm-disabled .signature-pulse{animation:none}
+@media(prefers-reduced-motion:reduce){html:not(.xm-user-on) .signature-signal,html:not(.xm-user-on) .signature-pulse{animation:none}}
+.solution-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:18px;align-items:stretch}
+.solution-choices{display:grid;gap:8px;min-width:0}
+.solution-choices button{text-align:left;min-height:52px;padding:12px 16px;background:#1b1b1b;border:1px solid #3d3d3d;border-radius:8px;font-weight:650;line-height:1.4;overflow-wrap:anywhere}
+.solution-choices button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:#252a1c}
+.solution-result{min-width:0;padding:clamp(22px,4vw,38px);background:#23251f;border:1px solid #4b5040;border-radius:12px;display:flex;flex-direction:column;justify-content:center}
+.solution-result h3{font-size:clamp(24px,3.5vw,38px)}
+.solution-result p{color:var(--muted)}
+.solution-result .solution-price{color:var(--accent);font-weight:750}
+@media(max-width:760px){.solution-layout{grid-template-columns:minmax(0,1fr)}.signature-stage{border-radius:12px}.signature-label{font-size:10px;padding:4px 6px}.studio-copy h1{font-size:clamp(36px,9.2vw,54px)}.site-nav .social-contact{max-width:100%}.service-cases>div,.service-nav,.seo-linklist{max-width:100%}.xprice{width:100%}}
