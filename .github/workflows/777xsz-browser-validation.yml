@@ -1,0 +1,31 @@
+name: 777xsz browser validation
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test browser
+        run: |
+          npm install --prefix /tmp/777xsz-test --no-save --package-lock=false playwright@1.51.1
+          /tmp/777xsz-test/node_modules/.bin/playwright install --with-deps chromium
+      - name: Browser checks
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/777xsz-server.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:8765/ >/dev/null && break; sleep 1; done
+          NODE_PATH=/tmp/777xsz-test/node_modules node tests/777xsz-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: 777xsz-browser-screenshots
+          path: test-screenshots/
+          if-no-files-found: ignore
