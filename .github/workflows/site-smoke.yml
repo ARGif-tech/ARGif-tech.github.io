@@ -12,4 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Verify all primary pages, local links and sitemap
-        run: python3 scripts/check-site.py
+        run: |
+          python3 scripts/check-site.py
+          python3 scripts/check-seo.py

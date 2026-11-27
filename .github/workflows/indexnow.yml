@@ -1,0 +1,24 @@
+name: Notify search engines IndexNow
+on:
+  push:
+    branches: [main]
+    paths: ['index.html','services/**','courses/**','library/**','sitemap.xml','llms.txt','scripts/indexnow.py']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: indexnow-777xsz
+  cancel-in-progress: true
+jobs:
+  notify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify live website and submit changed canonical URLs
+        env:
+          BEFORE: ${{ github.event.before }}
+          ALL_URLS: ${{ github.event_name == 'workflow_dispatch' || github.event.before == 'cde9364cf0b5b979753025461d9560eb3bf403be' }}
+        run: python3 scripts/indexnow.py
