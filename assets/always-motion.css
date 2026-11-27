@@ -1,0 +1,13 @@
+/* Motion enabled automatically; no switches. */ 
+#benefits .benefit .object-art svg{animation:none!important;transform:none!important;overflow:visible}#benefits .object-art{overflow:visible}#benefits .benefit-motion-svg{filter:drop-shadow(0 7px 9px #0005)}#benefits .benefit:nth-child(2) .object-art,#benefits .benefit:nth-child(6) .object-art{bottom:14px}
+html.motion-enabled .float-panel{animation:visiblefloat 3.8s ease-in-out infinite!important}html.motion-enabled .moving-orbit{animation:orbitdash 4s linear infinite!important}html.motion-enabled .wave-glow{animation:wave 6s linear infinite!important}
+html.motion-enabled .object-art:not(#benefits .object-art) svg{animation:none!important;transition:none!important;will-change:transform}
+.xsz-motion-art{will-change:transform;transform-origin:center center}
+@keyframes xsz-soft-light{0%,100%{opacity:.55}50%{opacity:1}}
+html.motion-enabled .impl-light,html.motion-enabled .journey-item.active .node::after{animation:xsz-soft-light 2.6s ease-in-out infinite!important}
+html.motion-enabled .halo::after{animation:halo-spin 18s linear infinite!important}
+html.motion-enabled .card .glyph{animation:none!important}
+html.motion-enabled .visual-path b{animation:scan 3s linear infinite!important}
+html.motion-enabled .project-preview{overflow:hidden}
+@media(max-width:600px){#benefits .benefit .object-art{width:135px;height:110px;right:2px}#benefits .benefit:nth-child(2) .object-art,#benefits .benefit:nth-child(6) .object-art{bottom:11px}}
+@media(prefers-reduced-motion:reduce){html.motion-enabled .halo::after,html.motion-enabled .float-panel,html.motion-enabled .moving-orbit,html.motion-enabled .wave-glow{animation-play-state:running!important}}
