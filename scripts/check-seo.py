@@ -36,7 +36,7 @@ class CrawlPage(HTMLParser):
   if tag=='meta': self.meta[a.get('name') or a.get('property')]=a.get('content')
   if tag=='link' and a.get('rel')=='canonical': self.canon.append(a.get('href'))
   if tag=='h1': self.h1+=1
-commercial=['index.html']+[str(p.relative_to(root)) for p in (root/'services').glob('*/index.html')]+['cases/index.html']+[str(p.relative_to(root)) for p in (root/'cases').glob('*/index.html') if 'noindex,follow' not in p.read_text()]
+commercial=['index.html']+[str(p.relative_to(root)) for p in (root/'services').glob('*/index.html')]
 sitemap={el.text for el in s.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
 visited=set();queue=['index.html']
 while queue:

@@ -19,7 +19,7 @@ class Page(HTMLParser):
 parsed={}; errors=[]
 for path in ROOT.rglob('*.html'):
  text=path.read_text()
- if not any(mark in text for mark in ('premium-finish.css','atelier-777xsz.css')):continue
+ if not any(mark in text for mark in ('premium-finish.css','atelier-777xsz.css','public-site.css')):continue
  page=Page(text);parsed[path]=page
  if page.h1!=1:errors.append(f'{path.relative_to(ROOT)}: {page.h1} H1s')
  if page.title!=1:errors.append(f'{path.relative_to(ROOT)}: title count {page.title}')
