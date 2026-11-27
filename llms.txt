@@ -49,3 +49,8 @@
 * [GETFIT](https://777xsz.shop/cases/getfit/): Показать направления тренировок, условия посещения и помочь посетительнице записаться на пробное занятие. Сайт: https://getfitcompany.kz/
 * [Rabota v Europe KZ](https://777xsz.shop/cases/rabota-v-europe/): Представить проект трудоустройства за рубежом в интернете. Сайт: https://rabotaveuropekz.com/
 * [Preview Asia](https://777xsz.shop/cases/preview-asia/): Создать отдельное пространство для презентации и тестирования цифровых проектов. Сайт: https://preview.asia/
+
+## Языки
+* [Қазақша](https://777xsz.shop/kk/): шолу, қызметтер мен бағалар.
+* [English](https://777xsz.shop/en/): commercial services and indicative prices.
+Подробные страницы услуг, курсы и калькуляторы пока на русском языке.
